@@ -1,9 +1,11 @@
+/* 全体の文字を下げる */
 body {
   margin: 0;
   font-family: "Hiragino Maru Gothic ProN", sans-serif;
   background: #f9fff3;
   color: #333;
   scroll-behavior: smooth;
+  padding-top: 100px; /* ← これを追加！ */
 }
 
 /* ローディング画面 */
