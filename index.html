@@ -2,10 +2,8 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>すわっこ市場</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
 </head>
 <body>
   <!-- ローディング画面 -->
@@ -19,42 +17,55 @@
     <h1>すわっこ市場</h1>
     <nav>
       <ul>
-        <li><a href="#vegetables">野菜販売</a></li>
-        <li><a href="#about">紹介</a></li>
+        <li><a href="#top" class="scroll-link">トップ</a></li>
+        <li><a href="#vegetables" class="scroll-link">野菜紹介</a></li>
+        <li><a href="#market" class="scroll-link">市場情報</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- 野菜販売 -->
-  <section id="vegetables" class="scroll-item">
-    <h2>野菜販売</h2>
+  <!-- トップ -->
+  <section id="top" class="section fade-in">
+    <h2>ようこそ！すわっこ市場へ</h2>
+    <p>地元の新鮮な野菜と楽しいイベントがいっぱい！</p>
+  </section>
+
+  <!-- 野菜紹介 -->
+  <section id="vegetables" class="section fade-in">
+    <h2>野菜紹介</h2>
     <div class="grid">
-      <div>
+      <div class="card">
         <img src="carrot.jpg" alt="にんじん">
         <p>にんじん</p>
       </div>
-      <div>
+      <div class="card">
         <img src="tomato.jpg" alt="トマト">
         <p>トマト</p>
       </div>
-      <div>
+      <div class="card">
         <img src="cabbage.jpg" alt="キャベツ">
         <p>キャベツ</p>
       </div>
     </div>
   </section>
 
-  <!-- イベント紹介 -->
-  <section id="about" class="scroll-item">
-    <h2>紹介</h2>
-    <p>すわっこ市場は、地域の新鮮な野菜を販売するイベントです。<br>
-       地元の農家さんの愛情いっぱいのお野菜をぜひお楽しみください！</p>
-    <img src="sample1.jpg" alt="イベント風景">
+  <!-- 市場情報 -->
+  <section id="market" class="section fade-in">
+    <h2>市場情報</h2>
+    <p>〒206-0024 東京都多摩市諏訪5丁目13番地</p>
+    <p>電話：042-371-4533・4534</p>
+    <p>FAX：042-337-7636</p>
+    <p><a href="https://schit.net/tama/essuwa/" target="_blank">公式サイト</a></p>
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=東京都多摩市諏訪5丁目13番地&output=embed"></iframe>
+    </div>
   </section>
 
   <!-- フッター -->
   <footer>
-    <p>&copy; 2025 すわっこ市場</p>
+    <p>© 2025 すわっこ市場</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
