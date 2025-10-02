@@ -1,13 +1,9 @@
-// ローディング画面制御
+// ローディング処理
 window.addEventListener("load", () => {
-  const loading = document.getElementById("loading");
-  loading.style.opacity = "0";
-  setTimeout(() => loading.style.display = "none", 500);
+  document.getElementById("loading").style.display = "none";
 });
 
-// スクロールでふわっと表示
-const items = document.querySelectorAll(".scroll-item");
-
+// スクロールでアニメーション発火
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -15,5 +11,15 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 });
+document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
-items.forEach(item => observer.observe(item));
+// スムーズスクロール（クリックで飛ぶ）
+document.querySelectorAll('.scroll-link').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+});
