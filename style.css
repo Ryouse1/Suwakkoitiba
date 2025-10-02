@@ -1,65 +1,89 @@
 body {
   margin: 0;
-  font-family: 'Fredoka One', sans-serif;
-  background-image: url('images/bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: #333;
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  background: #f0fff0;
 }
 
+/* ローディング */
 #loading {
   position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  display:flex;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #fff;
+  display: flex;
   flex-direction: column;
-  justify-content:center;
-  align-items:center;
-  background:#fff;
-  z-index:9999;
-}
-#loading img { width:120px; height:120px; margin-bottom:20px; }
-
-nav ul {
-  list-style:none;
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  padding:0;
-}
-nav ul li a {
-  color: #FF7F00;
-  text-decoration:none;
-  font-weight:bold;
-}
-nav ul li a:hover { text-decoration: underline; }
-
-.scroll-item {
-  opacity: 0;
-  transform: translateY(50px);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-section {
-  padding:80px 20px;
-  text-align:center;
-}
-
-.vegetable-card {
-  display:inline-block;
-  background: rgba(255,244,224,0.9);
-  border-radius: 15px;
-  padding: 15px;
-  margin:20px;
-  width: 200px;
+/* ヘッダー */
+header {
+  background: #4CAF50;
+  color: white;
+  padding: 20px;
   text-align: center;
-  font-size: 1.2rem;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
 }
-.vegetable-card img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  margin-bottom: 10px;
+
+header ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+header ul li {
+  margin: 0 15px;
+}
+
+header ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* セクション */
+section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+section img {
+  max-width: 250px;
   border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* グリッド */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.grid img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* 地図 */
+.map {
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* フッター */
+footer {
+  background: #333;
+  color: white;
+  padding: 15px;
+  text-align: center;
 }
