@@ -50,9 +50,33 @@ nav a {
 }
 
 .section {
-  min-height: 100vh;
-  padding: 100px 20px;
+  min-height: auto;
+  padding: 80px 20px;
   text-align: center;
+}
+
+/* 校長先生 */
+.principal-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.principal-img {
+  width: 150px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.principal-msg {
+  flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 /* 野菜カード */
