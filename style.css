@@ -1,100 +1,103 @@
 body {
   margin: 0;
-  font-family: "Arial", sans-serif;
-  line-height: 1.6;
-  background: #f0fff0;
+  font-family: "Hiragino Maru Gothic ProN", sans-serif;
+  background: #f9fff3;
+  color: #333;
+  scroll-behavior: smooth;
 }
 
-/* ローディング */
+/* ローディング画面 */
 #loading {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: #fff;
+  top: 0; left: 0; right: 0; bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: white;
+  z-index: 9999;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #4caf50;
+  color: white;
+  padding: 10px 0;
   z-index: 1000;
 }
 
-/* ヘッダー */
-header {
-  background: #4CAF50;
-  color: white;
-  padding: 20px;
+header h1 {
+  margin: 0;
   text-align: center;
-  position: sticky;
-  top: 0;
 }
 
-header ul {
-  list-style: none;
+nav ul {
   display: flex;
   justify-content: center;
+  list-style: none;
   padding: 0;
 }
 
-header ul li {
+nav li {
   margin: 0 15px;
 }
 
-header ul li a {
+nav a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
 }
 
-/* セクション */
-section {
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: auto;
+.section {
+  min-height: 100vh;
+  padding: 100px 20px;
   text-align: center;
 }
 
-section img {
-  max-width: 250px;
-  border-radius: 10px;
-  margin-top: 20px;
-}
-
-/* グリッド */
+/* 野菜カード */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  justify-content: center;
   gap: 20px;
-  margin-top: 20px;
+  flex-wrap: wrap;
 }
 
-.grid img {
+.card {
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  width: 150px;
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Map */
+.map iframe {
   width: 100%;
-  border-radius: 10px;
+  height: 300px;
+  border: 0;
 }
 
-/* 地図 */
-.map {
-  margin-top: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-/* フッター */
-footer {
-  background: #333;
-  color: white;
-  padding: 15px;
-  text-align: center;
-}
-
-.scroll-item {
+/* アニメーション */
+.fade-in {
   opacity: 0;
   transform: translateY(30px);
-  transition: 0.8s ease;
+  transition: opacity 1s ease, transform 1s ease;
 }
 
-.scroll-item.show {
+.fade-in.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+footer {
+  background: #4caf50;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
 }
