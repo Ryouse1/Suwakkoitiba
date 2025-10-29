@@ -2,10 +2,13 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>すわっこ市場</title>
+  <title>〇〇市場</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- ニンジン用 canvas（最前面に出す） -->
+  <canvas id="carrotCanvas"></canvas>
+
   <!-- ローディング画面 -->
   <div id="loading">
     <img src="images/IMG_0149.png" alt="読み込み中" style="max-width:200px;">
@@ -79,6 +82,10 @@
     <p>© 2025 ⚪︎⚪︎学校</p>
   </footer>
 
+  <!-- あなたの元のJS -->
   <script src="script.js"></script>
+
+  <!-- ニンジンのJS -->
+  <script src="carrot-fall.js" defer></script>
 </body>
 </html>
