@@ -10,76 +10,24 @@
 <!-- ローディング -->
 <div id="loading">
   <img src="images/IMG_0149.png" alt="loading">
-  <p>Loading...</p>
+  <p>Loading…</p>
 </div>
 
-<!-- ヘッダー -->
-<header>
-  <h1>〇〇市場</h1>
-  <nav>
-    <ul>
-      <li><a href="#top">トップ</a></li>
-      <li><a href="#principal">校長先生の挨拶</a></li>
-      <li><a href="#vegetables">野菜紹介</a></li>
-      <li><a href="#market">市場情報</a></li>
-    </ul>
-  </nav>
-</header>
+<!-- ページの内容 -->
+<div id="content" style="display:none;">
+  <h1>〇〇市場へようこそ！</h1>
+  <p>地元の新鮮な野菜と楽しいイベントがいっぱいです。</p>
+</div>
 
-<!-- トップ -->
-<section id="top" class="section fade-in">
-  <h2>ようこそ！〇〇市場へ</h2>
-  <p>地元の新鮮な野菜と楽しいイベントがいっぱい！</p>
-</section>
+<script>
+  // ローディングを2秒表示して消す
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("content").style.display = "block";
+    }, 2000);
+  });
+</script>
 
-<!-- 校長先生 -->
-<section id="principal" class="section fade-in">
-  <h2>校長先生の挨拶</h2>
-  <div class="principal-box">
-    <img src="principal.jpg" alt="校長先生" class="principal-img">
-    <div class="principal-msg">
-      <p>みなさん、ようこそ「〇〇市場」へ！</p>
-      <p>地元の新鮮な野菜を通じて、地域の魅力を感じてください。子どもたち、保護者の皆さま、地域の皆さまが交流し、楽しい時間を過ごせることを願っています。</p>
-      <p>校長先生より</p>
-    </div>
-  </div>
-</section>
-
-<!-- 野菜紹介 -->
-<section id="vegetables" class="section fade-in">
-  <h2>野菜紹介</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="carrot.jpg" alt="にんじん">
-      <p>にんじん</p>
-    </div>
-    <div class="card">
-      <img src="tomato.jpg" alt="トマト">
-      <p>トマト</p>
-    </div>
-    <div class="card">
-      <img src="cabbage.jpg" alt="キャベツ">
-      <p>キャベツ</p>
-    </div>
-  </div>
-</section>
-
-<!-- 市場情報 -->
-<section id="market" class="section fade-in">
-  <h2>市場情報</h2>
-  <p>〒000-0000</p>
-  <p>電話：000-0000-0000</p>
-  <p>FAX：000-0000-0000</p>
-  <p><a href="https://google.com" target="_blank">公式サイト</a></p>
-  <div class="map">
-    <iframe src="https://www.google.com/maps/space/moon/@0,145.186348,637101000a,60y,30.6t/data=!3m1!1e3?entry=ttu"></iframe>
-  </div>
-</section>
-
-<footer>
-  <p>© 2025 〇〇学校</p>
-</footer>
-
-<script src="script.js"></script>
 </body>
 </html>
