@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (loading) loading.style.display = 'none';
   document.body.style.visibility = 'visible';
 
-  // 滑らかスクロール関数
+  // 滑らかスクロール
   function smoothScrollTo(targetY, duration = 600) {
     const startY = window.scrollY;
     const distance = targetY - startY;
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(step);
   }
 
-  // ページ内リンク滑らかスクロール
+  // ページ内リンク
   document.querySelectorAll('a.scroll-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
