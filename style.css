@@ -5,7 +5,7 @@ body {
   background: #f9fff3;
   color: #333;
   scroll-behavior: smooth;
-  padding-top: 100px; /* ← これを追加！ */
+  padding-top: 100px; /* ヘッダー分 */
 }
 
 /* ローディング画面 */
@@ -127,14 +127,3 @@ footer {
   text-align: center;
   padding: 15px 0;
 }
-
-#carrotCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 9999;
-}
-
