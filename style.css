@@ -32,8 +32,8 @@ body {
 }
 
 @keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0; }
+  0%,50%,100% {opacity:1;}
+  25%,75% {opacity:0;}
 }
 
 /* ヘッダー */
@@ -47,10 +47,7 @@ header {
   z-index: 1000;
 }
 
-header h1 {
-  margin: 0;
-  text-align: center;
-}
+header h1 { margin: 0; text-align: center; }
 
 nav ul {
   display: flex;
@@ -60,29 +57,15 @@ nav ul {
   margin: 0;
 }
 
-nav li {
-  margin: 0 15px;
-}
+nav li { margin: 0 15px; }
 
-nav a {
-  color: white;
-  text-decoration: none;
-}
+nav a { color: white; text-decoration: none; }
 
 /* セクション */
-section {
-  padding: 120px 20px; /* ヘッダー固定分 */
-  min-height: 400px;
-  text-align: center;
-}
+section { padding: 120px 20px; min-height: 400px; text-align: center; }
 
 /* 野菜カード */
-.grid {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
+.grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 
 .card {
   background: #fff;
@@ -92,14 +75,7 @@ section {
   width: 150px;
 }
 
-.card img {
-  max-width: 100%;
-  border-radius: 8px;
-}
+.card img { max-width: 100%; border-radius: 8px; }
 
 /* Map */
-.map iframe {
-  width: 100%;
-  height: 300px;
-  border: 0;
-}
+.map iframe { width: 100%; height: 300px; border: 0; }
