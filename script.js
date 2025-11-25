@@ -1,16 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ブラウザのデフォルトスクロール無効化
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-
-  // URL にアンカーがあっても瞬間移動を防ぐ
-  if (location.hash) {
-    window.scrollTo(0, 0);
-    history.replaceState(null, '', location.pathname + location.search);
-  }
-
-  // ローディング非表示
+  // ローディング非表示 & body 表示
   const loading = document.getElementById('loading');
   if (loading) loading.style.display = 'none';
+  document.body.style.visibility = 'visible';
 
   // 滑らかスクロール関数
   function smoothScrollTo(targetY, duration = 600) {
@@ -30,18 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       window.scrollTo(0, startY + distance * ease);
 
-      if (elapsed < duration) {
-        requestAnimationFrame(step);
-      }
+      if (elapsed < duration) requestAnimationFrame(step);
     }
 
     requestAnimationFrame(step);
   }
 
-  // ページ内リンク設定
+  // ページ内リンク滑らかスクロール
   document.querySelectorAll('a.scroll-link').forEach(link => {
     link.addEventListener('click', e => {
-      e.preventDefault(); // デフォルトアンカー動作を完全停止
+      e.preventDefault();
       const targetId = link.getAttribute('href').substring(1);
       const targetElem = document.getElementById(targetId);
       if (!targetElem) return;
