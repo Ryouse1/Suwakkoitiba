@@ -7,27 +7,66 @@
 </head>
 <body>
 
-<!-- ローディング -->
+<!-- ローディング画面 -->
 <div id="loading">
   <img src="images/IMG_0149.png" alt="loading">
-  <p>Loading…</p>
+  <div class="loading-text">Loading…</div>
 </div>
 
-<!-- ページの内容 -->
-<div id="content" style="display:none;">
-  <h1>〇〇市場へようこそ！</h1>
-  <p>地元の新鮮な野菜と楽しいイベントがいっぱいです。</p>
-</div>
+<!-- ヘッダー -->
+<header>
+  <h1>〇〇市場</h1>
+  <nav>
+    <ul>
+      <li><a href="#top" class="scroll-link">トップ</a></li>
+      <li><a href="#principal" class="scroll-link">校長先生の挨拶</a></li>
+      <li><a href="#vegetables" class="scroll-link">野菜紹介</a></li>
+      <li><a href="#market" class="scroll-link">市場情報</a></li>
+    </ul>
+  </nav>
+</header>
 
-<script>
-  // ローディングを2秒表示して消す
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      document.getElementById("loading").style.display = "none";
-      document.getElementById("content").style.display = "block";
-    }, 2000);
-  });
-</script>
+<!-- セクション -->
+<section id="top">
+  <h2>トップ</h2>
+  <p>ようこそ〇〇市場へ！</p>
+</section>
 
+<section id="principal">
+  <h2>校長先生の挨拶</h2>
+  <p>みなさん、ようこそ「〇〇市場」へ！</p>
+  <p>地元の新鮮な野菜を通じて、地域の魅力を感じてください。</p>
+</section>
+
+<section id="vegetables">
+  <h2>野菜紹介</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="carrot.jpg" alt="にんじん">
+      <p>にんじん</p>
+    </div>
+    <div class="card">
+      <img src="tomato.jpg" alt="トマト">
+      <p>トマト</p>
+    </div>
+    <div class="card">
+      <img src="cabbage.jpg" alt="キャベツ">
+      <p>キャベツ</p>
+    </div>
+  </div>
+</section>
+
+<section id="market">
+  <h2>市場情報</h2>
+  <p>〒000-0000</p>
+  <p>電話：000-0000-0000</p>
+  <p>FAX：000-0000-0000</p>
+  <p><a href="https://google.com" target="_blank">公式サイト</a></p>
+  <div class="map">
+    <iframe src="https://www.google.com/maps/space/moon/@0,145.186348,637101000a,60y,30.6t/data=!3m1!1e3?entry=ttu"></iframe>
+  </div>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>
