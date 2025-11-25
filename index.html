@@ -4,8 +4,15 @@
 <meta charset="UTF-8">
 <title>〇〇市場</title>
 <link rel="stylesheet" href="style.css">
+
+<script>
+  // ページレンダリング前にアンカージャンプを防ぐ
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0,0);
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+</script>
 </head>
-<body>
+<body style="visibility: hidden;">
 
 <!-- ローディング画面 -->
 <div id="loading">
