@@ -6,7 +6,7 @@ body {
   color: #333;
 }
 
-/* ローディング */
+/* ローディング画面 */
 #loading {
   position: fixed;
   top: 50%;
@@ -27,9 +27,9 @@ body {
 
 .loading-text {
   font-size: 1.5rem;
-  text-align: center;
   color: #333;
   animation: blink 1s infinite;
+  text-align: center;
 }
 
 @keyframes blink {
