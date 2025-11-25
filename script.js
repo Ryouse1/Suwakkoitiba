@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ブラウザのデフォルトスクロールを無効化
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
+  // ブラウザのデフォルトスクロール無効化
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
-  // ページ読み込み直後に強制的にトップにスクロール
-  window.scrollTo(0, 0);
+  // URL にアンカーがあっても瞬間移動を防ぐ
+  if (location.hash) {
+    window.scrollTo(0, 0);
+    history.replaceState(null, '', location.pathname + location.search);
+  }
 
   // ローディング非表示
   const loading = document.getElementById('loading');
