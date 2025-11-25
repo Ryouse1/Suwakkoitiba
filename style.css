@@ -72,7 +72,7 @@ nav a {
 
 /* セクション */
 section {
-  padding: 120px 20px; /* ヘッダー高さ分余裕 */
+  padding: 120px 20px; /* ヘッダー固定分 */
   min-height: 400px;
   text-align: center;
 }
