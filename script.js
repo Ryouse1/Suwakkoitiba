@@ -1,4 +1,4 @@
-// ローディングを消す + フェードインアニメーション
+// ローディング非表示 + フェードイン
 window.addEventListener("load", () => {
   const loading = document.getElementById("loading");
   if (loading) loading.style.display = "none";
