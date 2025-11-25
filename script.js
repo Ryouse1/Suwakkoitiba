@@ -1,8 +1,9 @@
-// ローディング非表示 + フェードイン
+// ローディングを非表示にしてフェードイン
 window.addEventListener("load", () => {
-  const loading = document.getElementById("loading");
-  if (loading) loading.style.display = "none";
+  setTimeout(() => {
+    document.getElementById("loading").style.display = "none";
+  }, 2000);
 
-  const fadeElements = document.querySelectorAll(".fade-in");
-  fadeElements.forEach(el => el.classList.add("show"));
+  const elems = document.querySelectorAll('.fade-in');
+  elems.forEach(el => el.classList.add('show'));
 });
