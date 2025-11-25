@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ページ読み込み完了と同時にローディング非表示
+  // ローディングをページ読み込み完了と同時に非表示
   const loading = document.getElementById('loading');
   if (loading) loading.style.display = 'none';
 
-  // 滑らかスクロール関数
+  // 滑らかスクロール関数（瞬間移動なし）
   function smoothScrollTo(targetY, duration = 600) {
     const startY = window.scrollY;
     const distance = targetY - startY;
@@ -32,13 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // ページ内リンク設定
   document.querySelectorAll('a.scroll-link').forEach(link => {
     link.addEventListener('click', e => {
-      e.preventDefault();
+      e.preventDefault(); // デフォルトアンカー動作を停止
       const targetId = link.getAttribute('href').substring(1);
       const targetElem = document.getElementById(targetId);
       if (!targetElem) return;
 
       const headerHeight = document.querySelector('header').offsetHeight;
-      const targetY = targetElem.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      // トップの場合も負の値を防ぐ
+      const targetY = Math.max(targetElem.getBoundingClientRect().top + window.pageYOffset - headerHeight, 0);
 
       smoothScrollTo(targetY, 600);
     });
