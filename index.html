@@ -1,81 +1,84 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>〇〇市場</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>〇〇市場</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ローディング画面（画像だけ） -->
-  <div id="loading">
-    <img src="images/IMG_0149.png" alt="読み込み中" style="max-width:200px;">
+
+<!-- ローディング -->
+<div id="loading">
+  <img src="images/IMG_0149.png" alt="loading">
+</div>
+
+<!-- ヘッダー -->
+<header>
+  <h1>〇〇市場</h1>
+  <nav>
+    <ul>
+      <li><a href="#top">トップ</a></li>
+      <li><a href="#principal">校長先生の挨拶</a></li>
+      <li><a href="#vegetables">野菜紹介</a></li>
+      <li><a href="#market">市場情報</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- トップ -->
+<section id="top" class="section fade-in">
+  <h2>ようこそ！〇〇市場へ</h2>
+  <p>地元の新鮮な野菜と楽しいイベントがいっぱい！</p>
+</section>
+
+<!-- 校長先生 -->
+<section id="principal" class="section fade-in">
+  <h2>校長先生の挨拶</h2>
+  <div class="principal-box">
+    <img src="principal.jpg" alt="校長先生" class="principal-img">
+    <div class="principal-msg">
+      <p>みなさん、ようこそ「〇〇市場」へ！</p>
+      <p>地元の新鮮な野菜を通じて、地域の魅力を感じてください。子どもたち、保護者の皆さま、地域の皆さまが交流し、楽しい時間を過ごせることを願っています。</p>
+      <p>校長先生より</p>
+    </div>
   </div>
+</section>
 
-  <!-- ヘッダー -->
-  <header>
-    <h1>⚪︎⚪︎市場</h1>
-    <nav>
-      <ul>
-        <li><a href="#top" class="scroll-link">トップ</a></li>
-        <li><a href="#principal" class="scroll-link">校長先生の挨拶</a></li>
-        <li><a href="#vegetables" class="scroll-link">野菜紹介</a></li>
-        <li><a href="#market" class="scroll-link">市場情報</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- コンテンツ -->
-  <section id="top" class="section fade-in">
-    <h2>ようこそ！⚪︎⚪︎市場へ</h2>
-    <p>地元の新鮮な野菜と楽しいイベントがいっぱい！</p>
-  </section>
-
-  <section id="principal" class="section fade-in">
-    <h2>校長先生の挨拶</h2>
-    <div class="principal-box">
-      <img src="principal.jpg" alt="校長先生の写真" class="principal-img">
-      <div class="principal-msg">
-        <p>みなさん、ようこそ「⚪︎⚪︎市場」へ！</p>
-        <p>地元の新鮮な野菜を通じて、地域の魅力を感じてください。</p>
-        <p>校長先生より</p>
-      </div>
+<!-- 野菜紹介 -->
+<section id="vegetables" class="section fade-in">
+  <h2>野菜紹介</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="carrot.jpg" alt="にんじん">
+      <p>にんじん</p>
     </div>
-  </section>
-
-  <section id="vegetables" class="section fade-in">
-    <h2>野菜紹介</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="carrot.jpg" alt="にんじん">
-        <p>にんじん</p>
-      </div>
-      <div class="card">
-        <img src="tomato.jpg" alt="トマト">
-        <p>トマト</p>
-      </div>
-      <div class="card">
-        <img src="cabbage.jpg" alt="キャベツ">
-        <p>キャベツ</p>
-      </div>
+    <div class="card">
+      <img src="tomato.jpg" alt="トマト">
+      <p>トマト</p>
     </div>
-  </section>
-
-  <section id="market" class="section fade-in">
-    <h2>市場情報</h2>
-    <p>〒000-0000</p>
-    <p>電話：000-0000-0000</p>
-    <p>FAX：000-0000-0000</p>
-    <p><a href="https://google.com" target="_blank">公式サイト</a></p>
-    <div class="map">
-      <iframe src="https://www.google.com/maps/space/moon/@0,145.186348,637101000a,60y,30.6t/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D"></iframe>
+    <div class="card">
+      <img src="cabbage.jpg" alt="キャベツ">
+      <p>キャベツ</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2025 ⚪︎⚪︎学校</p>
-  </footer>
+<!-- 市場情報 -->
+<section id="market" class="section fade-in">
+  <h2>市場情報</h2>
+  <p>〒000-0000</p>
+  <p>電話：000-0000-0000</p>
+  <p>FAX：000-0000-0000</p>
+  <p><a href="https://google.com" target="_blank">公式サイト</a></p>
+  <div class="map">
+    <iframe src="https://www.google.com/maps/space/moon/@0,145.186348,637101000a,60y,30.6t/data=!3m1!1e3?entry=ttu"></iframe>
+  </div>
+</section>
 
-  <!-- JS -->
-  <script src="script.js"></script>
+<footer>
+  <p>© 2025 〇〇学校</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
