@@ -1,4 +1,13 @@
-function smoothScrollTo(targetY, duration = 500) {
+// ローディングを2秒後に非表示
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const loading = document.getElementById('loading');
+    if (loading) loading.style.display = 'none';
+  }, 2000);
+});
+
+// 滑らかスクロール関数（ヘッダー高さ補正）
+function smoothScrollTo(targetY, duration = 600) {
   const startY = window.scrollY;
   const distance = targetY - startY;
   let startTime = null;
@@ -8,9 +17,9 @@ function smoothScrollTo(targetY, duration = 500) {
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / duration, 1);
 
-    // イージング（easeInOutQuad）
-    const ease = progress < 0.5 
-      ? 2 * progress * progress 
+    // easeInOutQuad
+    const ease = progress < 0.5
+      ? 2 * progress * progress
       : -1 + (4 - 2 * progress) * progress;
 
     window.scrollTo(0, startY + distance * ease);
@@ -34,6 +43,6 @@ document.querySelectorAll('a.scroll-link').forEach(link => {
     const headerHeight = document.querySelector('header').offsetHeight;
     const targetY = targetElem.getBoundingClientRect().top + window.pageYOffset - headerHeight;
 
-    smoothScrollTo(targetY, 600); // 600msで滑らかスクロール
+    smoothScrollTo(targetY, 600);
   });
 });
