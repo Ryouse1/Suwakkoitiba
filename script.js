@@ -1,9 +1,11 @@
-// ローディングを非表示にしてフェードイン
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("loading").style.display = "none";
-  }, 2000);
-
-  const elems = document.querySelectorAll('.fade-in');
-  elems.forEach(el => el.classList.add('show'));
+// ページ内リンクを滑らかにスクロール
+document.querySelectorAll('a.scroll-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const targetElem = document.getElementById(targetId);
+    if (targetElem) {
+      targetElem.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
 });
