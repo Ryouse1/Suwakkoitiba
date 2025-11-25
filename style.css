@@ -3,8 +3,7 @@ body {
   font-family: "Hiragino Maru Gothic ProN", sans-serif;
   background: #f9fff3;
   color: #333;
-  text-align: center;
-  scroll-behavior: smooth; /* ページ内リンクの滑らかスクロール */
+  scroll-behavior: smooth; /* ページ内リンク滑らかスクロール */
 }
 
 /* ローディング */
@@ -12,9 +11,9 @@ body {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column; /* 画像と文字を縦に並べる */
+  align-items: center;    /* 横方向中央揃え */
+  justify-content: center; /* 縦方向中央揃え */
   background: white;
   z-index: 9999;
 }
@@ -22,12 +21,13 @@ body {
 #loading img {
   width: 150px;
   height: auto;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .loading-text {
   font-size: 1.5rem;
   color: #333;
+  text-align: center; /* 文字中央揃え */
 }
 
 /* ヘッダー */
