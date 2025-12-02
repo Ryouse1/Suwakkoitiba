@@ -42,41 +42,40 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // カウントダウン
-  async function startServerCountdown() {
-    try {
-      // サーバー時間取得
-      const res = await fetch('/api/time'); // サーバー側API必須
-      const data = await res.json();
-      const serverNow = new Date(data.now).getTime();
+async function startServerCountdown() {
+  try {
+    const res = await fetch('/api/time');
+    const data = await res.json();
+    const serverNow = new Date(data.now).getTime();
 
-      const publishTime = new Date('2025-12-05T10:00:00Z').getTime(); // 公開日時
-      let diff = publishTime - serverNow;
+    const publishTime = new Date('2025-12-05T10:00:00Z').getTime();
+    let diff = publishTime - serverNow;
 
-      const countdownEl = document.getElementById('countdown');
-      const messageEl = document.getElementById('countdown-message');
+    const countdownEl = document.getElementById('countdown');
+    const messageEl = document.getElementById('countdown-message');
 
-      const timer = setInterval(() => {
-        if(diff <= 0){
-          countdownEl.style.display = 'none';
-          messageEl.style.display = 'block';
-          clearInterval(timer);
-          return;
-        }
+    const timer = setInterval(() => {
+      if(diff <= 0){
+        countdownEl.style.display = 'none';
+        messageEl.style.display = 'block';
+        clearInterval(timer);
+        return;
+      }
 
-        const days = Math.floor(diff / (1000*60*60*24));
-        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-        const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
-        const seconds = Math.floor((diff % (1000*60)) / 1000);
+      const days = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const seconds = Math.floor((diff % (1000*60)) / 1000);
 
-        countdownEl.innerText = `${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
-        diff -= 1000;
-      }, 1000);
+      countdownEl.innerText = `${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
+      diff -= 1000;
+    }, 1000);
 
-    } catch(err) {
-      console.error('カウントダウン取得エラー:', err);
-      document.getElementById('countdown').innerText = 'エラー';
-    }
+  } catch(err) {
+    console.error(err);
+    document.getElementById('countdown').innerText = 'エラー';
   }
+}
 
   startServerCountdown();
 });
