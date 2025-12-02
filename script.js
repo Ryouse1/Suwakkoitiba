@@ -48,7 +48,7 @@ async function startServerCountdown() {
     const data = await res.json();
     const serverNow = new Date(data.now).getTime();
 
-    const publishTime = new Date('2025-03-01T10:00:00Z').getTime();
+    const publishTime = new Date('2026-03-01T10:00:00Z').getTime();
     let diff = publishTime - serverNow;
 
     const countdownEl = document.getElementById('countdown');
