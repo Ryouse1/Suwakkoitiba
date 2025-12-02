@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (loading) loading.style.display = 'none';
   document.body.style.visibility = 'visible';
 
-  // 滑らかスクロール
+  // スムーズスクロール
   function smoothScrollTo(targetY, duration = 600) {
     const startY = window.scrollY;
     const distance = targetY - startY;
@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
 
-      // easeInOutQuad
       const ease = progress < 0.5
         ? 2 * progress * progress
         : -1 + (4 - 2 * progress) * progress;
@@ -28,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(step);
   }
 
-  // ページ内リンク
   document.querySelectorAll('a.scroll-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -42,4 +40,43 @@ document.addEventListener('DOMContentLoaded', () => {
       smoothScrollTo(targetY, 600);
     });
   });
+
+  // カウントダウン
+  async function startServerCountdown() {
+    try {
+      // サーバー時間取得
+      const res = await fetch('/api/time'); // サーバー側API必須
+      const data = await res.json();
+      const serverNow = new Date(data.now).getTime();
+
+      const publishTime = new Date('2025-12-05T10:00:00Z').getTime(); // 公開日時
+      let diff = publishTime - serverNow;
+
+      const countdownEl = document.getElementById('countdown');
+      const messageEl = document.getElementById('countdown-message');
+
+      const timer = setInterval(() => {
+        if(diff <= 0){
+          countdownEl.style.display = 'none';
+          messageEl.style.display = 'block';
+          clearInterval(timer);
+          return;
+        }
+
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+        const seconds = Math.floor((diff % (1000*60)) / 1000);
+
+        countdownEl.innerText = `${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
+        diff -= 1000;
+      }, 1000);
+
+    } catch(err) {
+      console.error('カウントダウン取得エラー:', err);
+      document.getElementById('countdown').innerText = 'エラー';
+    }
+  }
+
+  startServerCountdown();
 });
