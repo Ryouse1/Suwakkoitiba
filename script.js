@@ -1,3 +1,5 @@
+alert("script.js 動いてるよ！");
+
 document.addEventListener('DOMContentLoaded', () => {
   // ローディング非表示 & body 表示
   const loading = document.getElementById('loading');
