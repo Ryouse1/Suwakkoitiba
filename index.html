@@ -5,7 +5,6 @@
 <title>すわっこ市場</title>
 <link rel="stylesheet" href="style.css">
 
-<!-- レンダリング前にジャンプを潰す -->
 <script>
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0,0);
@@ -14,26 +13,25 @@
 </head>
 <body>
 
-<!-- ローディング画面 -->
+<!-- ローディング -->
 <div id="loading">
   <img src="images/IMG_0149.png" alt="loading">
   <div class="loading-text">Loading…</div>
 </div>
 
-<!-- ヘッダー -->
 <header>
   <h1>すわっこ市場</h1>
   <nav>
     <ul>
       <li><a href="#top" class="scroll-link">トップ</a></li>
-      <li><a href="#principal" class="scroll-link">校長先生の挨拶</a></li>
-      <li><a href="#vegetables" class="scroll-link">野菜紹介</a></li>
+      <li><a href="#principal" class="scroll-link">挨拶</a></li>
+      <li><a href="#vegetables" class="scroll-link">野菜</a></li>
+      <li><a href="#blog" class="scroll-link">ブログ</a></li>
       <li><a href="#market" class="scroll-link">市場情報</a></li>
     </ul>
   </nav>
 </header>
 
-<!-- セクション -->
 <section id="top">
   <h2>トップ</h2>
   <p>ようこそすわっこ市場へ！</p>
@@ -41,7 +39,6 @@
 
 <section id="principal">
   <h2>校長先生の挨拶</h2>
-  <p>みなさん、ようこそ「すわっこ市場」へ！</p>
   <p>地元の新鮮な野菜を通じて、地域の魅力を感じてください。</p>
 </section>
 
@@ -49,35 +46,58 @@
   <h2>野菜紹介</h2>
   <div class="grid">
     <div class="card">
-      <img src="carrot.jpg" alt="にんじん">
+      <img src="images/carrot.jpg">
       <p>にんじん</p>
     </div>
     <div class="card">
-      <img src="tomato.jpg" alt="トマト">
+      <img src="images/tomato.jpg">
       <p>トマト</p>
     </div>
     <div class="card">
-      <img src="cabbage.jpg" alt="キャベツ">
+      <img src="images/cabbage.jpg">
       <p>キャベツ</p>
     </div>
   </div>
 </section>
 
-<!-- ここにカウントダウン -->
 <section id="countdown-section">
   <h2>オープンまであと</h2>
   <div id="countdown">読み込み中…</div>
   <div id="countdown-message">市場オープン！🎉</div>
 </section>
 
+<!-- 🔥 ブログ統合 -->
+<section id="blog">
+  <h2>ブログ</h2>
+
+  <article class="post">
+    <h3>市場オープン準備中！</h3>
+    <p class="date">2025-12-19</p>
+    <img src="images/blog1.jpg">
+    <p>
+      すわっこ市場の準備が進んでいます。<br>
+      地元の皆さんに喜んでもらえる市場を目指しています！
+    </p>
+  </article>
+
+  <article class="post">
+    <h3>にんじんが届きました🥕</h3>
+    <p class="date">2025-12-20</p>
+    <img src="images/blog2.jpg">
+    <p>
+      朝採れの新鮮なにんじんが入荷しました。<br>
+      本日のおすすめです！
+    </p>
+  </article>
+
+</section>
+
 <section id="market">
   <h2>市場情報</h2>
   <p>〒000-0000</p>
   <p>電話：000-0000-0000</p>
-  <p>FAX：000-0000-0000</p>
-  <p><a href="https://google.com" target="_blank">公式サイト</a></p>
   <div class="map">
-    <iframe src="https://www.google.com/maps/space/moon/@0,145.186348,637101000a,60y,30.6t/data=!3m1!1e3?entry=ttu"></iframe>
+    <iframe src="https://www.google.com/maps/space/moon/@0,145.186348,637101000a,60y,30.6t/data=!3m1!1e3"></iframe>
   </div>
 </section>
 
