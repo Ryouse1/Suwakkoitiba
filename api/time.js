@@ -1,5 +1,6 @@
-export default function handler(req, res) {
-  // サーバーの現在時刻
-  const serverTime = new Date();
-  res.status(200).json({ now: serverTime.toISOString() });
-}
+// api/time.js
+module.exports = (req, res) => {
+  res.json({
+    now: new Date().toISOString()
+  });
+};
