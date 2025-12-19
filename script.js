@@ -1,4 +1,3 @@
-alert("script.js 動いてるよ！");
 
 document.addEventListener('DOMContentLoaded', () => {
   // ローディング非表示 & body 表示
@@ -83,9 +82,3 @@ async function startServerCountdown() {
 document.addEventListener('DOMContentLoaded', () => {
   startServerCountdown();
 });
-
-  const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log("Server running on", PORT);
-});
-
