@@ -1,84 +1,92 @@
+// ===== script.js（完成・安全版） =====
+console.log("script.js loaded");
 
-document.addEventListener('DOMContentLoaded', () => {
-  // ローディング非表示 & body 表示
-  const loading = document.getElementById('loading');
-  if (loading) loading.style.display = 'none';
-  document.body.style.visibility = 'visible';
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOMContentLoaded fired");
 
-  // スムーズスクロール
-  function smoothScrollTo(targetY, duration = 600) {
-    const startY = window.scrollY;
-    const distance = targetY - startY;
-    let startTime = null;
-
-    function step(currentTime) {
-      if (!startTime) startTime = currentTime;
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-
-      const ease = progress < 0.5
-        ? 2 * progress * progress
-        : -1 + (4 - 2 * progress) * progress;
-
-      window.scrollTo(0, startY + distance * ease);
-
-      if (elapsed < duration) requestAnimationFrame(step);
-    }
-
-    requestAnimationFrame(step);
+  /* =========================
+     ローディング解除
+  ========================= */
+  const loading = document.getElementById("loading");
+  if (loading) {
+    loading.style.display = "none";
+    console.log("loading hidden");
   }
 
-  document.querySelectorAll('a.scroll-link').forEach(link => {
-    link.addEventListener('click', e => {
+  /* =========================
+     スムーズスクロール
+  ========================= */
+  document.querySelectorAll("a.scroll-link").forEach(link => {
+    link.addEventListener("click", e => {
       e.preventDefault();
-      const targetId = link.getAttribute('href').substring(1);
-      const targetElem = document.getElementById(targetId);
-      if (!targetElem) return;
 
-      const headerHeight = document.querySelector('header').offsetHeight;
-      const targetY = Math.max(targetElem.getBoundingClientRect().top + window.pageYOffset - headerHeight, 0);
+      const targetId = link.getAttribute("href").replace("#", "");
+      const target = document.getElementById(targetId);
+      if (!target) return;
 
-      smoothScrollTo(targetY, 600);
+      const header = document.querySelector("header");
+      const headerHeight = header ? header.offsetHeight : 0;
+
+      const y =
+        target.getBoundingClientRect().top +
+        window.pageYOffset -
+        headerHeight;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth"
+      });
     });
   });
 
-  // カウントダウン
-async function startServerCountdown() {
+  /* =========================
+     カウントダウン開始
+  ========================= */
+  startCountdown();
+});
+
+/* =========================
+   カウントダウン関数
+   （/api/time 使用）
+========================= */
+async function startCountdown() {
+  const countdownEl = document.getElementById("countdown");
+  const messageEl = document.getElementById("countdown-message");
+
+  if (!countdownEl || !messageEl) return;
+
   try {
-    const res = await fetch('/api/time');
+    const res = await fetch("/api/time");
+    if (!res.ok) throw new Error("API error");
+
     const data = await res.json();
-    const serverNow = new Date(data.now).getTime();
+    let now = new Date(data.now).getTime();
 
-    // 公開日時を2026年3月に設定（例：3月1日 10:00 UTC）
-    const publishTime = new Date('2026-03-01T10:00:00Z').getTime();
-
-    let diff = publishTime - serverNow;
-    const countdownEl = document.getElementById('countdown');
-    const messageEl = document.getElementById('countdown-message');
+    // 公開日時（UTC）
+    const publishTime = new Date("2026-03-01T10:00:00Z").getTime();
 
     const timer = setInterval(() => {
+      const diff = publishTime - now;
+      now += 1000;
+
       if (diff <= 0) {
-        countdownEl.style.display = 'none';
-        messageEl.style.display = 'block';
         clearInterval(timer);
+        countdownEl.style.display = "none";
+        messageEl.style.display = "block";
         return;
       }
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+      const minutes = Math.floor(diff / (1000 * 60)) % 60;
+      const seconds = Math.floor(diff / 1000) % 60;
 
-      countdownEl.innerText = `${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
-      diff -= 1000;
+      countdownEl.textContent =
+        `${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
     }, 1000);
 
   } catch (err) {
-    console.error('カウントダウン取得エラー:', err);
-    document.getElementById('countdown').innerText = 'エラー';
+    console.error("countdown error:", err);
+    countdownEl.textContent = "カウントダウン取得失敗";
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  startServerCountdown();
-});
