@@ -1,59 +1,87 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>すわっこ市場</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>すわっこ市場</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 
-<script>
-if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-window.scrollTo(0,0);
-if (location.hash) history.replaceState(null, '', location.pathname + location.search);
-</script>
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0,0);
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  </script>
 </head>
 <body>
 
 <!-- ローディング -->
 <div id="loading">
-<img src="images/IMG_0149.png" alt="loading">
-<div class="loading-text">Loading…</div>
+  <img src="images/IMG_0149.png" alt="loading">
+  <div class="loading-text">Loading…</div>
 </div>
 
 <header>
-<h1>すわっこ市場</h1>l
-<nav>
-<ul>
-<li><a href="#top" class="scroll-link">トップ</a></li>
-<li><a href="#principal" class="scroll-link">挨拶</a></li>
-<li><a href="#vegetables" class="scroll-link">野菜</a></li>
-<li><a href="#blog" class="scroll-link">ブログ</a></li>
-<li><a href="#market" class="scroll-link">市場情報</a></li>
-</ul>
-</nav>
+  <h1>すわっこ市場</h1>
+  <nav>
+    <ul>
+      <li><a href="#top" class="scroll-link">トップ</a></li>
+      <li><a href="#principal" class="scroll-link">挨拶</a></li>
+      <li><a href="#vegetables" class="scroll-link">野菜</a></li>
+      <li><a href="#blog" class="scroll-link">ブログ</a></li>
+      <li><a href="#market" class="scroll-link">市場情報</a></li>
+    </ul>
+  </nav>
 </header>
 
 <section id="top">
-<h2>トップ</h2>
-<p>ようこそ <strong>すわっこ市場</strong> へ！</p>
+  <h2>トップ</h2>
+  <p>ようこそ <strong>すわっこ市場</strong> へ！</p>
 </section>
 
 <section id="principal">
-<h2>校長先生の挨拶</h2>
-<p>地元の新鮮な野菜を通じて、地域の魅力を感じてください。</p>
+  <h2>校長先生の挨拶</h2>
+  <p>地元の新鮮な野菜を通じて、地域の魅力を感じてください。</p>
 </section>
 
 <section id="vegetables">
-<h2>野菜紹介</h2>
-<div class="grid">
-<div class="card"><img src="images/carrot.jpg" alt="にんじん"><p>にんじん</p></div>
-<div class="card"><img src="images/tomato.jpg" alt="トマト"><p>トマト</p></div>
-<div class="card"><img src="images/cabbage.jpg" alt="キャベツ"><p>キャベツ</p></div>
-</div>
+  <h2>野菜紹介</h2>
+  <div class="grid">
+    <div class="card"><img src="images/carrot.jpg"><p>にんじん</p></div>
+    <div class="card"><img src="images/tomato.jpg"><p>トマト</p></div>
+    <div class="card"><img src="images/cabbage.jpg"><p>キャベツ</p></div>
+  </div>
 </section>
 
 <section id="countdown-section">
-<h2>オープンまであと</h2>
-<div id="countdown">読み込み中…</div>
-<div id="countdown-message" style="display:none;">市場オープン！🎉</div>
+  <h2>オープンまであと</h2>
+  <div id="countdown">読み込み中…</div>
+  <div id="countdown-message" style="display:none;">市場オープン！🎉</div>
+</section>
+
+<section id="blog">
+  <h2>ブログ</h2>
+
+  <article class="post">
+    <h3>市場オープン準備中！</h3>
+    <p class="date">2025-12-19</p>
+    <img src="images/blog1.jpg">
+    <p>すわっこ市場の準備が進んでいます。</p>
+  </article>
+
+  <article class="post">
+    <h3>にんじんが届きました🥕</h3>
+    <p class="date" id="blog-date">読み込み中…</p>
+    <img src="images/blog2.jpg">
+    <p id="blog-text">読み込み中…</p>
+  </article>
+</section>
+
+<section id="market">
+  <h2>市場情報</h2>
+  <p>〒000-0000</p>
+  <p>電話：000-0000-0000</p>
+</section>
+
+<script src="script.js"></script>
+</body>
 </html>
