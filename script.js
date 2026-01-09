@@ -10,24 +10,23 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("a.scroll-link").forEach(link => {
     link.addEventListener("click", e => {
       e.preventDefault();
-
       const id = link.getAttribute("href").replace("#", "");
       const target = document.getElementById(id);
       if (!target) return;
 
       const header = document.querySelector("header");
       const offset = header ? header.offsetHeight : 0;
-
       const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
       window.scrollTo({ top: y, behavior: "smooth" });
     });
   });
 
   startCountdown();
-  loadBlogTime();
+  formatPostDates();
 });
 
-// カウントダウン（/api/time 使用）
+// カウントダウン
 async function startCountdown() {
   const countdown = document.getElementById("countdown");
   const message = document.getElementById("countdown-message");
@@ -36,7 +35,6 @@ async function startCountdown() {
   try {
     const res = await fetch("/api/time");
     const data = await res.json();
-
     let now = new Date(data.now).getTime();
     const openTime = new Date("2026-03-01T10:00:00Z").getTime();
 
@@ -58,23 +56,23 @@ async function startCountdown() {
 
       countdown.textContent = `${d}日 ${h}時間 ${m}分 ${s}秒`;
     }, 1000);
-
   } catch {
     countdown.textContent = "カウントダウン取得失敗";
   }
 }
 
-// ブログ時刻表示
-async function loadBlogTime() {
-  try {
-    const res = await fetch("/api/time");
-    const data = await res.json();
+// 投稿日を自動整形
+function formatPostDates() {
+  document.querySelectorAll(".post-date").forEach(el => {
+    const raw = el.dataset.date;
+    if (!raw) return;
 
-    document.getElementById("blog-date").innerHTML =
-      `<time datetime="${data.now}">${new Date(data.now).toLocaleDateString("ja-JP")}</time>`;
+    const d = new Date(raw);
+    if (isNaN(d)) {
+      el.textContent = "日付エラー";
+      return;
+    }
 
-    document.getElementById("blog-text").innerHTML =
-      `<strong>朝採れ</strong>の <mark>新鮮なにんじん</mark> が入荷しました🥕`;
-
-  } catch {}
+    el.innerHTML = `<time datetime="${raw}">${d.toLocaleDateString("ja-JP")}</time>`;
+  });
 }
