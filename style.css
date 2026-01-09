@@ -1,4 +1,88 @@
-/* フッター */
+/* ===== 基本 ===== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f8f8f8;
+  padding-top: 80px; /* fixedヘッダー対策 */
+  line-height: 1.6;
+}
+a { text-decoration: none; }
+
+/* ===== ローディング ===== */
+#loading {
+  position: fixed;
+  inset: 0;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* ===== ヘッダー ===== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  z-index: 500;
+}
+header h1 { margin: 0; font-size: 1.5em; }
+header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+header nav a { color: white; }
+
+/* ===== セクション ===== */
+main section {
+  padding: 80px 20px 60px;
+  scroll-margin-top: 80px;
+  max-width: 1000px;
+  margin: auto;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.card, .post {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  flex: 1 1 calc(33% - 20px);
+  min-width: 250px;
+}
+.card img, .post img { width: 100%; border-radius: 8px; }
+
+/* ===== カウントダウン ===== */
+#countdown-section {
+  text-align: center;
+  background: #fffbe6;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 10px;
+  padding: 20px;
+}
+#countdown { font-size: 2em; color: #e74c3c; }
+#countdown-message { display: none; font-size: 2em; color: #27ae60; }
+
+/* ===== ブログ ===== */
+#blog { max-width: 900px; margin: auto; }
+.post { margin-bottom: 40px; }
+.date { color: #777; font-size: 0.9em; }
+
+/* ===== マップ ===== */
+.map iframe { width: 100%; height: 300px; border: 0; }
+
+/* ===== フッター ===== */
 footer {
   background-color: #f8f9fa;
   padding: 40px 20px;
@@ -6,21 +90,9 @@ footer {
   font-size: 14px;
   text-align: center;
   color: #555;
-  margin-top: 40px;
 }
-
-footer a {
-  color: #555;
-  text-decoration: none;
-  margin: 0 12px;
-  transition: color 0.2s;
-}
-
-footer a:hover {
-  color: #4CAF50; /* ヘッダーと同じ色にして統一感 */
-}
-
-/* GitHub アイコン付きリンク */
+footer a { margin: 0 12px; color: #555; transition: color 0.2s; }
+footer a:hover { color: #4CAF50; }
 .footer-github {
   display: inline-flex;
   align-items: center;
@@ -31,28 +103,16 @@ footer a:hover {
   margin-bottom: 10px;
   transition: color 0.2s;
 }
+.footer-github svg { fill: currentColor; transition: transform 0.2s; }
+.footer-github:hover svg { transform: scale(1.2); }
 
-.footer-github svg {
-  fill: currentColor;
-  transition: transform 0.2s;
+/* ===== レスポンシブ ===== */
+@media (max-width: 768px) {
+  .grid { flex-direction: column; }
+  .card, .post { flex: 1 1 100%; }
 }
-
-.footer-github:hover {
-  color: #0366d6;
-}
-
-.footer-github:hover svg {
-  transform: scale(1.2);
-}
-
-/* レスポンシブ対応 */
 @media (max-width: 600px) {
-  footer {
-    font-size: 13px;
-    padding: 30px 15px;
-  }
-  .footer-github {
-    flex-direction: column;
-    gap: 4px;
-  }
+  main section { padding: 60px 15px 40px; }
+  footer { font-size: 13px; padding: 30px 15px; }
+  .footer-github { flex-direction: column; gap: 4px; }
 }
