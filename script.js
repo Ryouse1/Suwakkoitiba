@@ -36,7 +36,7 @@ async function startCountdown() {
     const res = await fetch("/api/time");
     const data = await res.json();
     let now = new Date(data.now).getTime();
-    const openTime = new Date("2026-03-01T10:00:00Z").getTime();
+    const openTime = new Date("2026-03-18T10:00:00Z").getTime();
 
     const timer = setInterval(() => {
       const diff = openTime - now;
