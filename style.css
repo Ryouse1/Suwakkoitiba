@@ -2,56 +2,72 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
+  padding-top: 80px; /* ヘッダー分 */
   background: #f8f8f8;
-  padding-top: 80px; /* fixedヘッダー対策 */
   line-height: 1.6;
 }
-a { text-decoration: none; }
 
-/* ===== ローディング ===== */
-#loading {
-  position: fixed;
-  inset: 0;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
+a { text-decoration: none; }
 
 /* ===== ヘッダー ===== */
 header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #4CAF50;
+  position: relative;
+  overflow: hidden;
+  height: 300px;
   color: white;
-  padding: 10px 20px;
-  z-index: 500;
 }
-header h1 { margin: 0; font-size: 1.5em; }
-header nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+
+#header-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  object-fit: cover;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+  height: 100%;
   display: flex;
-  gap: 15px;
+  flex-direction: column;
+  justify-content: center;
 }
+
+.header-content h1 {
+  margin: 0;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+  list-style: none;
+}
+
 header nav a { color: white; }
 
 /* ===== セクション ===== */
 main section {
-  padding: 80px 20px 60px;
-  scroll-margin-top: 80px;
+  padding: 60px 20px;
   max-width: 1000px;
   margin: auto;
 }
+
 .grid {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
+
 .card, .post {
   background: white;
   padding: 15px;
@@ -60,27 +76,20 @@ main section {
   flex: 1 1 calc(33% - 20px);
   min-width: 250px;
 }
-.card img, .post img { width: 100%; border-radius: 8px; }
 
-/* ===== カウントダウン ===== */
-#countdown-section {
-  text-align: center;
-  background: #fffbe6;
-  max-width: 600px;
-  margin: auto;
-  border-radius: 10px;
-  padding: 20px;
+.card img, .post img {
+  width: 100%;
+  border-radius: 8px;
 }
-#countdown { font-size: 2em; color: #e74c3c; }
-#countdown-message { display: none; font-size: 2em; color: #27ae60; }
+
+/* ===== 動画 ===== */
+.video-section { margin-bottom: 30px; }
+.video-title { font-weight: bold; margin-bottom: 6px; }
+.video-section video { width: 100%; max-width: 600px; }
 
 /* ===== ブログ ===== */
-#blog { max-width: 900px; margin: auto; }
 .post { margin-bottom: 40px; }
 .date { color: #777; font-size: 0.9em; }
-
-/* ===== マップ ===== */
-.map iframe { width: 100%; height: 300px; border: 0; }
 
 /* ===== フッター ===== */
 footer {
@@ -91,28 +100,14 @@ footer {
   text-align: center;
   color: #555;
 }
-footer a { margin: 0 12px; color: #555; transition: color 0.2s; }
-footer a:hover { color: #4CAF50; }
-.footer-github {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: bold;
-  color: #24292f;
-  text-decoration: none;
-  margin-bottom: 10px;
-  transition: color 0.2s;
-}
-.footer-github svg { fill: currentColor; transition: transform 0.2s; }
-.footer-github:hover svg { transform: scale(1.2); }
 
 /* ===== レスポンシブ ===== */
 @media (max-width: 768px) {
   .grid { flex-direction: column; }
   .card, .post { flex: 1 1 100%; }
 }
+
 @media (max-width: 600px) {
-  main section { padding: 60px 15px 40px; }
+  main section { padding: 40px 15px; }
   footer { font-size: 13px; padding: 30px 15px; }
-  .footer-github { flex-direction: column; gap: 4px; }
 }
