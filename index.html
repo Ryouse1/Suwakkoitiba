@@ -2,112 +2,91 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>諏訪っ子市場</title>
+  <title>すわっ子市場</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
-
-  <script>
-    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    window.scrollTo(0,0);
-    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
-  </script>
 </head>
 <body>
 
-<!-- ローディング -->
-<div id="loading">
-  <img src="images/IMG_0149.png" alt="loading">
-  <div class="loading-text">Loading…</div>
-</div>
-
 <header>
-  <p style="font-weight:300; margin:0;">
-    諏訪小学校6年生が運営する
-  </p>
-  <h1 style="font-weight:700; margin:0;">
-    諏訪っ子市場
-  </h1>
-  <nav>
-    <ul>
-      <li><a href="#top" class="scroll-link">トップ</a></li>
-      <li><a href="#principal" class="scroll-link">挨拶</a></li>
-      <li><a href="#vegetables" class="scroll-link">野菜</a></li>
-      <li><a href="#blog" class="scroll-link">ブログ</a></li>
-      <li><a href="#market" class="scroll-link">市場情報</a></li>
-    </ul>
-  </nav>
+  <video autoplay muted loop id="header-video">
+    <source src="header.mp4" type="video/mp4">
+    お使いのブラウザでは動画を再生できません。
+  </video>
+
+  <div class="header-content">
+    <h1>すわっ子市場</h1>
+    <nav>
+      <ul>
+        <li><a href="#top">トップ</a></li>
+        <li><a href="#principal">挨拶</a></li>
+        <li><a href="#vegetables">野菜</a></li>
+        <li><a href="#videos">動画</a></li>
+        <li><a href="#blog">ブログ</a></li>
+        <li><a href="#market">市場情報</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<section id="top">
-  <h2>トップ</h2>
-  <p>ようこそ <strong>諏訪っ子市場</strong> へ！</p>
-</section>
+<main>
+  <section id="top">
+    <h2>トップ</h2>
+    <p>ようこそ <strong>すわっ子市場</strong> へ！</p>
+  </section>
 
-<section id="principal">
-  <h2>校長先生の挨拶</h2>
+  <section id="principal">
+    <h2>校長先生の挨拶</h2>
+    <img src="principal.jpg" alt="校長先生の写真" style="width:100%; max-width:400px; border-radius:10px;">
+    <p>地元の新鮮な野菜を通じて、地域の魅力を感じてください。</p>
+  </section>
 
-<img src="images/principal.jpg" alt="校長先生">
+  <section id="vegetables">
+    <h2>野菜紹介</h2>
+    <div class="grid">
+      <div class="card"><img src="images/carrot.jpg" alt="にんじん"><p>にんじん</p></div>
+      <div class="card"><img src="images/tomato.jpg" alt="トマト"><p>トマト</p></div>
+      <div class="card"><img src="images/cabbage.jpg" alt="キャベツ"><p>キャベツ</p></div>
+    </div>
+  </section>
 
-  <p>地元の新鮮な野菜を通じて、地域の魅力を感じてください。</p>
-</section>
+  <section id="videos">
+    <h2>動画</h2>
+    <div class="video-section">
+      <p class="video-title">〇〇動画①</p>
+      <video controls>
+        <source src="video1.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-section">
+      <p class="video-title">〇〇動画②</p>
+      <video controls>
+        <source src="video2.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
 
-<section id="vegetables">
-  <h2>野菜紹介</h2>
-  <div class="grid">
-    <div class="card"><img src="images/carrot.jpg" alt="にんじん"><p>にんじん</p></div>
-    <div class="card"><img src="images/tomato.jpg" alt="トマト"><p>トマト</p></div>
-    <div class="card"><img src="images/cabbage.jpg" alt="キャベツ"><p>キャベツ</p></div>
-  </div>
-</section>
+  <section id="blog">
+    <h2>ブログ</h2>
+    <article class="post">
+      <h3>市場オープン準備中！</h3>
+      <p class="date">投稿日：<span class="post-date" data-date="2025-12-19"></span></p>
+      <img src="images/blog1.jpg" alt="準備中">
+      <p>諏訪っ子市場の準備が進んでいます。</p>
+    </article>
+  </section>
 
-<section id="countdown-section">
-  <h2>オープンまであと</h2>
-  <div id="countdown">読み込み中…</div>
-  <div id="countdown-message" style="display:none;">市場オープン！🎉</div>
-</section>
+  <section id="market">
+    <h2>市場情報</h2>
+    <p>住所：〒２０６-００２４ 東京都多摩市諏訪５丁目１３番地</p>
+    <p>電話：042-371-4533・4534</p>
+    <p>FAX：042-337-7636</p>
+    <p>URL：<a href="https://schit.net/tama/essuwa/" target="_blank">https://schit.net/tama/essuwa/</a></p>
+  </section>
+</main>
 
-<section id="blog">
-  <h2>ブログ</h2>
-
-  <article class="post">
-    <h3>市場オープン準備中！</h3>
-    <p class="date">
-      投稿日：
-      <span class="post-date" data-date="2025-12-19"></span>
-    </p>
-    <img src="images/blog1.jpg" alt="準備中">
-    <p>すわっこ市場の準備が進んでいます。</p>
-  </article>
-
-  <article class="post">
-    <h3>にんじんが届きました🥕</h3>
-    <p class="date">
-      投稿日：
-      <span class="post-date" data-date="2025-12-20"></span>
-    </p>
-    <img src="images/blog2.jpg" alt="にんじん">
-    <p>朝採れの新鮮なにんじんが入荷しました。</p>
-  </article>
-</section>
-
-<section id="market">
-  <h2>市場情報</h2>
-  <p>〒000-0000</p>
-  <p>電話：000-0000-0000</p>
-</section>
-
-<!-- フッター -->
-<footer style="text-align: center; padding: 20px 0; border-top: 1px solid #ccc; margin-top: 40px;">
-  <a href="https://github.com/Ryouse1/suwakkoitiba" target="_blank"
-     style="text-decoration: none; color: inherit; display: inline-flex; align-items: center; gap: 5px; font-weight: bold;">
-    <svg height="24" width="24" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.001 8.001 0 0016 8c0-4.42-3.58-8-8-8z"/>
-    </svg>
-    <span>ソースコード</span>
-  </a>
-  <p style="margin-top:10px; font-size:0.9rem; color:#666;">
-    © 諏訪小学校
-  </p>
+<footer>
+  <p>© 諏訪小学校</p>
 </footer>
 
 <script src="script.js"></script>
