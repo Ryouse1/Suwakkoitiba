@@ -2,9 +2,9 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding-top: 80px; /* ヘッダー分 */
   background: #f8f8f8;
   line-height: 1.6;
+  scroll-behavior: smooth;
 }
 
 a { text-decoration: none; }
@@ -12,8 +12,8 @@ a { text-decoration: none; }
 /* ===== ヘッダー ===== */
 header {
   position: relative;
-  overflow: hidden;
   height: 300px;
+  overflow: hidden;
   color: white;
 }
 
@@ -21,8 +21,9 @@ header {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: auto;
+  height: 100%;
   min-width: 100%;
-  min-height: 100%;
   transform: translate(-50%, -50%);
   z-index: 0;
   object-fit: cover;
@@ -31,12 +32,14 @@ header {
 .header-content {
   position: relative;
   z-index: 1;
-  text-align: center;
-  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  background: rgba(0,0,0,0.3); /* 少し暗くして文字を読みやすく */
 }
 
 .header-content h1 {
@@ -50,18 +53,29 @@ header nav ul {
   justify-content: center;
   gap: 15px;
   margin-top: 10px;
+  padding: 0;
   list-style: none;
 }
 
-header nav a { color: white; }
+header nav a { color: white; font-weight: bold; }
 
-/* ===== セクション ===== */
+/* ===== メイン ===== */
+main {
+  padding-top: 20px;
+}
+
 main section {
   padding: 60px 20px;
   max-width: 1000px;
   margin: auto;
+  scroll-margin-top: 320px; /* ヘッダー被り防止 */
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+/* ===== グリッド ===== */
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -69,12 +83,12 @@ main section {
 }
 
 .card, .post {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   flex: 1 1 calc(33% - 20px);
   min-width: 250px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .card img, .post img {
@@ -85,7 +99,7 @@ main section {
 /* ===== 動画 ===== */
 .video-section { margin-bottom: 30px; }
 .video-title { font-weight: bold; margin-bottom: 6px; }
-.video-section video { width: 100%; max-width: 600px; }
+.video-section video { width: 100%; max-width: 600px; border-radius: 8px; }
 
 /* ===== ブログ ===== */
 .post { margin-bottom: 40px; }
