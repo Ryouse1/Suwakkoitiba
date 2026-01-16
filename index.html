@@ -2,24 +2,89 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>詐欺でした</title>
+  <title>諏訪っ子市場</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: black;
-      color: red;
-      font-size: 3rem;
-      font-weight: bold;
-      font-family: sans-serif;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  詐欺でした
+
+<header>
+  <h1>諏訪っ子市場</h1>
+  <nav>
+    <ul>
+      <li><a href="#top">トップ</a></li>
+      <li><a href="#principal">挨拶</a></li>
+      <li><a href="#vegetables">野菜</a></li>
+      <li><a href="#videos">動画</a></li>
+      <li><a href="#blog">ブログ</a></li>
+      <li><a href="#market">市場情報</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="top">
+    <h2>トップ</h2>
+    <p>ようこそ <strong>**諏訪っ子市場**</strong> へ！</p>
+  </section>
+
+  <section id="principal">
+    <h2>校長先生の挨拶</h2>
+    <img src="principal.jpg" alt="校長先生の写真" class="principal-img">
+    <p>地元の新鮮な野菜を通じて、地域の魅力を感じてください。</p>
+  </section>
+
+  <section id="vegetables">
+    <h2>野菜紹介</h2>
+    <div class="grid">
+      <div class="card"><img src="images/carrot.jpg" alt="にんじん"><p>にんじん</p></div>
+      <div class="card"><img src="images/tomato.jpg" alt="トマト"><p>トマト</p></div>
+      <div class="card"><img src="images/cabbage.jpg" alt="キャベツ"><p>キャベツ</p></div>
+    </div>
+  </section>
+
+  <section id="videos">
+    <h2>動画</h2>
+    
+    <div class="video-section">
+      <p class="video-title">〇〇動画①</p>
+      <video controls>
+        <source src="video1.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="video-section">
+      <p class="video-title">〇〇動画②</p>
+      <video controls>
+        <source src="video2.mp4" type="video/mp4">
+      </video>
+    </div>
+
+  </section>
+
+  <section id="blog">
+    <h2>ブログ</h2>
+    <article class="post">
+      <h3>市場オープン準備中！</h3>
+      <p class="date">投稿日：<span class="post-date" data-date="2025-12-19"></span></p>
+      <img src="images/blog1.jpg" alt="準備中">
+      <p>諏訪っ子市場の準備が進んでいます。</p>
+    </article>
+  </section>
+
+  <section id="market">
+    <h2>市場情報</h2>
+    <p>住所：〒２０６-００２４ 東京都多摩市諏訪５丁目１３番地</p>
+    <p>電話：042-371-4533・4534</p>
+    <p>FAX：042-337-7636</p>
+    <p>URL：<a href="https://schit.net/tama/essuwa/" target="_blank">https://schit.net/tama/essuwa/</a></p>
+  </section>
+</main>
+
+<footer>
+  <p>© 諏訪小学校</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
