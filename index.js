@@ -5,18 +5,34 @@ const fs = require("fs");
 const app = express();
 
 /* =========================
-   静的ファイル（HTML / CSS / JS）
+   全リクエストログ
+========================= */
+app.use((req, res, next) => {
+  console.log("\n---- REQUEST ----");
+  console.log("URL:", req.url);
+  console.log("Method:", req.method);
+  console.log("Headers:", req.headers);
+  next();
+});
+
+/* =========================
+   静的ファイル
 ========================= */
 app.use(express.static(__dirname));
 
 /* =========================
-   動画ストリーミング（重要）
+   動画ストリーミング + ログ
 ========================= */
 app.get("/videos/:name", (req, res) => {
   const videoName = req.params.name;
   const videoPath = path.join(__dirname, "videos", videoName);
 
+  console.log("\n---- VIDEO REQUEST ----");
+  console.log("File:", videoName);
+  console.log("Range:", req.headers.range || "none");
+
   if (!fs.existsSync(videoPath)) {
+    console.log("❌ FILE NOT FOUND");
     return res.status(404).send("Video not found");
   }
 
@@ -25,10 +41,11 @@ app.get("/videos/:name", (req, res) => {
   const range = req.headers.range;
 
   if (range) {
-    // Safari / Chrome が要求する部分読み込み
     const parts = range.replace(/bytes=/, "").split("-");
     const start = parseInt(parts[0], 10);
     const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+
+    console.log("Streaming bytes:", start, "-", end);
 
     const chunkSize = end - start + 1;
     const file = fs.createReadStream(videoPath, { start, end });
@@ -42,17 +59,19 @@ app.get("/videos/:name", (req, res) => {
 
     file.pipe(res);
   } else {
-    // 通常再生（PC向け）
+    console.log("Streaming full file");
+
     res.writeHead(200, {
       "Content-Length": fileSize,
       "Content-Type": "video/mp4",
     });
+
     fs.createReadStream(videoPath).pipe(res);
   }
 });
 
 /* =========================
-   API（例：時刻）
+   APIテスト
 ========================= */
 app.get("/api/time", (req, res) => {
   res.json({ time: new Date().toISOString() });
@@ -63,5 +82,5 @@ app.get("/api/time", (req, res) => {
 ========================= */
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log("Server running on port", PORT);
+  console.log("Server running on", PORT);
 });
