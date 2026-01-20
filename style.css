@@ -1,14 +1,28 @@
 /* ===== 基本 ===== */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   background: #f8f8f8;
   line-height: 1.6;
-  scroll-behavior: smooth;
 }
-a { text-decoration: none; }
 
-/* ===== ヘッダー ===== */
+a {
+  text-decoration: none;
+}
+
+* {
+  transition: color 0.25s ease,
+              background-color 0.25s ease,
+              transform 0.3s ease,
+              box-shadow 0.3s ease,
+              padding 0.3s ease;
+}
+
+/* ===== ヘッダー（ヒーロー） ===== */
 header {
   position: relative;
   height: 300px;
@@ -17,6 +31,7 @@ header {
   overflow: hidden;
 }
 
+/* 背景動画 */
 #header-video {
   position: absolute;
   top: 50%;
@@ -29,6 +44,7 @@ header {
   object-fit: cover;
 }
 
+/* 暗幕 */
 .header-overlay {
   position: absolute;
   inset: 0;
@@ -36,6 +52,7 @@ header {
   z-index: 1;
 }
 
+/* 中央コンテンツ */
 .header-content {
   position: relative;
   z-index: 2;
@@ -51,15 +68,26 @@ header {
   margin: 0;
   font-size: 2em;
   font-weight: bold;
-  color: white;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+
+/* ===== 追従ナビ ===== */
+header nav {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+
+  padding: 12px 0;
 }
 
 header nav ul {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-top: 10px;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -67,21 +95,36 @@ header nav ul {
 header nav a {
   color: white;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+header nav a:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+/* スクロール時 */
+header nav.scrolled {
+  padding: 6px 0;
+  background: rgba(0,0,0,0.85);
 }
 
 /* ===== メイン ===== */
-main { padding-top: 20px; }
+main {
+  padding-top: 20px;
+}
 
 main section {
   padding: 60px 20px;
   max-width: 1000px;
   margin: auto;
-  scroll-margin-top: 320px;
   background: #fff;
   border-radius: 10px;
   margin-bottom: 30px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+  scroll-margin-top: 80px;
 }
 
 /* ===== グリッド ===== */
@@ -91,7 +134,8 @@ main section {
   gap: 20px;
 }
 
-.card, .post {
+.card,
+.post {
   flex: 1 1 calc(33% - 20px);
   min-width: 250px;
   padding: 15px;
@@ -100,22 +144,52 @@ main section {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.card img, .post img {
+.card:hover,
+.post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.card img,
+.post img {
   width: 100%;
   border-radius: 8px;
 }
 
 /* ===== 動画 ===== */
-.video-section { margin-bottom: 30px; }
-.video-title { font-weight: bold; margin-bottom: 6px; }
-.video-section video { width: 100%; max-width: 600px; border-radius: 8px; }
+.video-section {
+  margin-bottom: 30px;
+}
+
+.video-title {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.video-section video {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+}
 
 /* ===== 校長画像 ===== */
-.principal-img { width: 100%; max-width: 400px; border-radius: 10px; display: block; margin-bottom: 15px; }
+.principal-img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 15px;
+}
 
 /* ===== ブログ ===== */
-.post { margin-bottom: 40px; }
-.date { color: #777; font-size: 0.9em; }
+.post {
+  margin-bottom: 40px;
+}
+
+.date {
+  color: #777;
+  font-size: 0.9em;
+}
 
 /* ===== フッター ===== */
 footer {
@@ -129,11 +203,23 @@ footer {
 
 /* ===== レスポンシブ ===== */
 @media (max-width: 768px) {
-  .grid { flex-direction: column; }
-  .card, .post { flex: 1 1 100%; }
+  .grid {
+    flex-direction: column;
+  }
+
+  .card,
+  .post {
+    flex: 1 1 100%;
+  }
 }
 
 @media (max-width: 600px) {
-  main section { padding: 40px 15px; }
-  footer { font-size: 13px; padding: 30px 15px; }
+  main section {
+    padding: 40px 15px;
+  }
+
+  footer {
+    font-size: 13px;
+    padding: 30px 15px;
+  }
 }
