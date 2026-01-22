@@ -1,3 +1,4 @@
+// server.js
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
@@ -16,9 +17,29 @@ app.use((req, res, next) => {
 });
 
 /* =========================
-   静的ファイル
+   ファビコンログ + 配信
 ========================= */
-app.use(express.static(__dirname));
+app.get("/favicons/:iconName", (req, res) => {
+  const iconName = req.params.iconName;
+  const iconPath = path.join(__dirname, "favicons", iconName);
+
+  // ログに書き出す
+  const logLine = `${new Date().toISOString()} - ${req.ip} requested ${iconName}\n`;
+  fs.appendFileSync("favicon.log", logLine);
+  console.log("📁 FAVICON REQUEST:", iconName, "from", req.ip);
+
+  // ファイル送信
+  if (fs.existsSync(iconPath)) {
+    res.sendFile(iconPath);
+  } else {
+    res.status(404).send("Favicon not found");
+  }
+});
+
+/* =========================
+   静的ファイル配信
+========================= */
+app.use(express.static(path.join(__dirname, "public")));
 
 /* =========================
    動画ストリーミング + ログ
@@ -78,7 +99,7 @@ app.get("/api/time", (req, res) => {
 });
 
 /* =========================
-   起動
+   サーバー起動
 ========================= */
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
