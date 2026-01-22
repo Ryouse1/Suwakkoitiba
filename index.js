@@ -4,61 +4,76 @@ const fs = require("fs");
 
 const app = express();
 
-// 静的ファイル配信（CSS, JS, 画像など）
-app.use(express.static(path.join(__dirname, "public")));
-
-// ファビコン
-app.get("/favicons/:iconName", (req, res) => {
-  const iconPath = path.join(__dirname, "favicons", req.params.iconName);
-  const logLine = `${new Date().toISOString()} - ${req.ip} requested ${req.params.iconName}\n`;
-  fs.appendFileSync("favicon.log", logLine);
-  if (fs.existsSync(iconPath)) res.sendFile(iconPath);
-  else res.status(404).send("Favicon not found");
+/* =========================
+   全リクエストログ
+========================= */
+app.use((req, res, next) => {
+  console.log("REQ:", req.method, req.url);
+  next();
 });
 
-// 動画ストリーミング
+/* =========================
+   静的ファイル（直下）
+========================= */
+app.use(express.static(__dirname));
+
+/* =========================
+   favicon ログ
+========================= */
+app.get("/favicons/:icon", (req, res) => {
+  const iconPath = path.join(__dirname, "favicons", req.params.icon);
+
+  fs.appendFileSync(
+    "favicon.log",
+    `${new Date().toISOString()} ${req.ip} ${req.params.icon}\n`
+  );
+
+  if (fs.existsSync(iconPath)) {
+    return res.sendFile(iconPath);
+  }
+  res.status(404).end();
+});
+
+/* =========================
+   動画ストリーミング
+========================= */
 app.get("/videos/:name", (req, res) => {
   const videoPath = path.join(__dirname, "videos", req.params.name);
-  if (!fs.existsSync(videoPath)) return res.status(404).send("Video not found");
+  if (!fs.existsSync(videoPath)) return res.sendStatus(404);
+
   const stat = fs.statSync(videoPath);
-  const fileSize = stat.size;
   const range = req.headers.range;
+
   if (range) {
-    const parts = range.replace(/bytes=/, "").split("-");
-    const start = parseInt(parts[0], 10);
-    const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
-    const chunkSize = end - start + 1;
-    const file = fs.createReadStream(videoPath, { start, end });
+    const [startStr, endStr] = range.replace("bytes=", "").split("-");
+    const start = parseInt(startStr, 10);
+    const end = endStr ? parseInt(endStr, 10) : stat.size - 1;
+
     res.writeHead(206, {
-      "Content-Range": `bytes ${start}-${end}/${fileSize}`,
+      "Content-Range": `bytes ${start}-${end}/${stat.size}`,
       "Accept-Ranges": "bytes",
-      "Content-Length": chunkSize,
+      "Content-Length": end - start + 1,
       "Content-Type": "video/mp4",
     });
-    file.pipe(res);
+
+    fs.createReadStream(videoPath, { start, end }).pipe(res);
   } else {
     res.writeHead(200, {
-      "Content-Length": fileSize,
+      "Content-Length": stat.size,
       "Content-Type": "video/mp4",
     });
     fs.createReadStream(videoPath).pipe(res);
   }
 });
 
-// APIテスト
-app.get("/api/time", (req, res) => {
-  res.json({ time: new Date().toISOString() });
-});
-
-// ルートアクセス時に index.html を返す
+/* =========================
+   ルート
+========================= */
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
-// 他のルートも index.html を返す（SPA向け）
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log("Server running on", PORT));
+app.listen(PORT, () => {
+  console.log("🔥 Server running on", PORT);
+});
