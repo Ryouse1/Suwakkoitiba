@@ -1,67 +1,65 @@
 console.log("script.js loaded");
 
 document.addEventListener("DOMContentLoaded", () => {
-
-  // ローディング解除
-  const loading = document.getElementById("loading");
-  if (loading) loading.style.display = "none";
-
-  // スムーズスクロール
-  document.querySelectorAll("a.scroll-link").forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      const id = link.getAttribute("href").replace("#", "");
-      const target = document.getElementById(id);
-      if (!target) return;
-
-      const header = document.querySelector("header");
-      const offset = header ? header.offsetHeight : 0;
-      const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
-
-      window.scrollTo({ top: y, behavior: "smooth" });
-    });
-  });
-
   startCountdown();
   formatPostDates();
 });
 
-// カウントダウン
+/* =========================
+   カウントダウン
+   ========================= */
 async function startCountdown() {
-  const countdown = document.getElementById("countdown");
-  const message = document.getElementById("countdown-message");
-  if (!countdown || !message) return;
+  // HTML 側は <p id="timer">
+  const countdown = document.getElementById("timer");
+  if (!countdown) return;
+
+  let now;
 
   try {
-    const res = await fetch("/api/time");
+    // API から現在時刻を取得
+    const res = await fetch("/api/time", { cache: "no-store" });
     const data = await res.json();
-    let now = new Date(data.now).getTime();
-    const openTime = new Date("2026-03-18T10:00:00Z").getTime();
 
-    const timer = setInterval(() => {
-      const diff = openTime - now;
-      now += 1000;
+    // デバッグ用（問題切り分けに便利）
+    console.log("api/time response:", data);
 
-      if (diff <= 0) {
-        clearInterval(timer);
-        countdown.style.display = "none";
-        message.style.display = "block";
-        return;
-      }
+    // now が無い or 変だったら即フォールバック
+    if (!data.now) throw new Error("now not found");
 
-      const d = Math.floor(diff / (1000*60*60*24));
-      const h = Math.floor(diff / (1000*60*60)) % 24;
-      const m = Math.floor(diff / (1000*60)) % 60;
-      const s = Math.floor(diff / 1000) % 60;
+    now = new Date(data.now).getTime();
+    if (isNaN(now)) throw new Error("now is NaN");
 
-      countdown.textContent = `${d}日 ${h}時間 ${m}分 ${s}秒`;
-    }, 1000);
-  } catch {
-    countdown.textContent = "カウントダウン取得失敗";
+  } catch (e) {
+    console.warn("API time failed, fallback to Date.now()", e);
+    // API が死んでも動く保険
+    now = Date.now();
   }
+
+  // ※ 日本時間 10:00 にしたい場合 +09:00
+  const openTime = new Date("2026-03-18T10:00:00+09:00").getTime();
+
+  const timer = setInterval(() => {
+    const diff = openTime - now;
+    now += 1000;
+
+    if (diff <= 0) {
+      clearInterval(timer);
+      countdown.textContent = "イベント開始！";
+      return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor(diff / (1000 * 60 * 60)) % 24;
+    const m = Math.floor(diff / (1000 * 60)) % 60;
+    const s = Math.floor(diff / 1000) % 60;
+
+    countdown.textContent = `${d}日 ${h}時間 ${m}分 ${s}秒`;
+  }, 1000);
 }
 
-// 投稿日を自動整形
+/* =========================
+   投稿日の自動整形
+   ========================= */
 function formatPostDates() {
   document.querySelectorAll(".post-date").forEach(el => {
     const raw = el.dataset.date;
@@ -73,6 +71,8 @@ function formatPostDates() {
       return;
     }
 
-    el.innerHTML = `<time datetime="${raw}">${d.toLocaleDateString("ja-JP")}</time>`;
+    el.innerHTML = `<time datetime="${raw}">
+      ${d.toLocaleDateString("ja-JP")}
+    </time>`;
   });
 }
