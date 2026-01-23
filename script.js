@@ -9,33 +9,31 @@ document.addEventListener("DOMContentLoaded", () => {
    カウントダウン
    ========================= */
 async function startCountdown() {
-  // HTML 側は <p id="timer">
-  const countdown = document.getElementById("timer");
-  if (!countdown) return;
+  const countdown = document.getElementById("countdown");
+  const message = document.getElementById("countdown-message");
+
+  if (!countdown || !message) {
+    console.warn("countdown elements not found");
+    return;
+  }
 
   let now;
 
   try {
-    // API から現在時刻を取得
     const res = await fetch("/api/time", { cache: "no-store" });
     const data = await res.json();
+    console.log("api/time:", data);
 
-    // デバッグ用（問題切り分けに便利）
-    console.log("api/time response:", data);
-
-    // now が無い or 変だったら即フォールバック
-    if (!data.now) throw new Error("now not found");
+    if (!data.now) throw new Error("now missing");
 
     now = new Date(data.now).getTime();
     if (isNaN(now)) throw new Error("now is NaN");
-
   } catch (e) {
-    console.warn("API time failed, fallback to Date.now()", e);
-    // API が死んでも動く保険
+    console.warn("API failed, fallback to Date.now()", e);
     now = Date.now();
   }
 
-  // ※ 日本時間 10:00 にしたい場合 +09:00
+  // 日本時間 2026/03/18 10:00
   const openTime = new Date("2026-03-18T10:00:00+09:00").getTime();
 
   const timer = setInterval(() => {
@@ -44,7 +42,8 @@ async function startCountdown() {
 
     if (diff <= 0) {
       clearInterval(timer);
-      countdown.textContent = "イベント開始！";
+      countdown.style.display = "none";
+      message.style.display = "block";
       return;
     }
 
