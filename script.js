@@ -1,53 +1,83 @@
-document.addEventListener("DOMContentLoaded",()=>{
+console.log("script.js loaded");
+
+document.addEventListener("DOMContentLoaded", () => {
   startCountdown();
   formatPostDates();
-  setupModal();
+  initZoomModal();
 });
 
+/* =========================
+   カウントダウン
+========================= */
 async function startCountdown(){
   const countdown=document.getElementById("countdown");
   const message=document.getElementById("countdown-message");
-  if(!countdown||!message) return;
+  if(!countdown||!message){console.warn("countdown elements not found");return;}
+
   let now;
   try{
     const res=await fetch("/api/time",{cache:"no-store"});
     const data=await res.json();
     now=new Date(data.now).getTime();
-    if(isNaN(now)) now=Date.now();
-  }catch{ now=Date.now();}
-  const openTime=new Date("2026-2-10T11:03:00+09:00").getTime();
+    if(isNaN(now)) throw new Error("now is NaN");
+  }catch(e){console.warn("API fail, fallback to Date.now()",e);now=Date.now();}
+
+  const openTime=new Date("2026-03-18T10:00:00+09:00").getTime();
+
   const timer=setInterval(()=>{
-    const diff=openTime-now; now+=1000;
-    if(diff<=0){ clearInterval(timer); countdown.style.display="none"; message.style.display="block"; return; }
+    let diff=openTime-now;
+    now+=1000;
+
+    if(diff<=0){clearInterval(timer);countdown.style.display="none";message.style.display="block";return;}
+
     const d=Math.floor(diff/(1000*60*60*24));
     const h=Math.floor(diff/(1000*60*60))%24;
     const m=Math.floor(diff/(1000*60))%60;
     const s=Math.floor(diff/1000)%60;
+
     countdown.textContent=`${d}日 ${h}時間 ${m}分 ${s}秒`;
-    if(diff<=5000){ countdown.classList.remove("countdown-bounce"); void countdown.offsetWidth; countdown.classList.add("countdown-bounce");}
+
+    if(d===0 && h===0 && m===0 && s<=3){
+      countdown.classList.add("countdown-bounce");
+      setTimeout(()=>countdown.classList.remove("countdown-bounce"),500);
+    }
+
   },1000);
 }
 
+/* =========================
+   日付整形
+========================= */
 function formatPostDates(){
   document.querySelectorAll(".post-date").forEach(el=>{
-    const raw=el.dataset.date; if(!raw) return;
-    const d=new Date(raw); if(isNaN(d)){el.textContent="日付エラー"; return;}
+    const raw=el.dataset.date;
+    if(!raw) return;
+    const d=new Date(raw);
     el.innerHTML=`<time datetime="${raw}">${d.toLocaleDateString("ja-JP")}</time>`;
   });
 }
 
-function setupModal(){
+/* =========================
+   画像モーダル
+========================= */
+function initZoomModal(){
   const modal=document.getElementById("imgModal");
   const modalImg=document.getElementById("modalImg");
   const closeBtn=modal.querySelector(".close");
-  const images=document.querySelectorAll(".zoomable");
-  images.forEach(img=>{ img.addEventListener("click",()=>{
-    modal.style.display="flex";
-    modalImg.src=img.src;
-    document.body.style.overflow="hidden";
-  });});
+
+  document.querySelectorAll(".zoomable").forEach(img=>{
+    img.addEventListener("click",()=>{
+      modal.style.display="block";
+      modalImg.src=img.src;
+      document.body.style.overflow="hidden";
+    });
+  });
+
   closeBtn.addEventListener("click",()=>{
     modal.style.display="none";
     document.body.style.overflow="auto";
   });
+
+  // 初回ロードでモーダル表示
+  // modal.style.display="block"; // 外すと任意クリック
 }
