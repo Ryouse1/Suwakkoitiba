@@ -15,7 +15,7 @@ async function startCountdown(){
     now=new Date(data.now).getTime();
     if(isNaN(now)) now=Date.now();
   }catch{ now=Date.now();}
-  const openTime=new Date("2026-03-18T10:00:00+09:00").getTime();
+  const openTime=new Date("2026-2-10T11:03:00+09:00").getTime();
   const timer=setInterval(()=>{
     const diff=openTime-now; now+=1000;
     if(diff<=0){ clearInterval(timer); countdown.style.display="none"; message.style.display="block"; return; }
