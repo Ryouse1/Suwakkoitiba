@@ -20,7 +20,7 @@ async function startCountdown(){
     if(isNaN(now)) throw new Error("parsed now is NaN");
   }catch(e){console.warn("API fail, fallback to Date.now()",e);now=Date.now();}
 
-  const openTime=new Date("2026-02-10T11:35:00+09:00").getTime();
+  const openTime=new Date("2026-03-18T10:00:00+09:00").getTime();
 
   const timer=setInterval(()=>{
     let diff=openTime-now;
