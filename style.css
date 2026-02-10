@@ -1,242 +1,58 @@
 /* ===== 基本 ===== */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
+body { font-family: Arial, sans-serif; margin:0; background:#f8f8f8; line-height:1.6; overflow-x:hidden; }
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f8f8f8;
-  line-height: 1.6;
-}
+a { text-decoration:none; }
+* { transition: color 0.25s ease, background-color 0.25s ease, transform 0.3s ease, box-shadow 0.3s ease; }
 
-a {
-  text-decoration: none;
-}
-
-* {
-  transition: color 0.25s ease,
-              background-color 0.25s ease,
-              transform 0.3s ease,
-              box-shadow 0.3s ease,
-              padding 0.3s ease;
-}
-
-/* ===== ナビ ===== */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 2000;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(6px);
-}
-
-header nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 0;
-  padding: 12px 0;
-  list-style: none;
-}
-
-header nav a {
-  color: white;
-  font-weight: bold;
-  padding: 6px 12px;
-  border-radius: 6px;
-}
-
-header nav a:hover {
-  background: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
-}
-
-/* ===== トップ ===== */
-#top {
-  background: #4CAF50;
-  color: white;
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.top-content h1 {
-  font-size: 3em;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-
-.big-countdown {
-  font-size: 2em;
-  margin: 20px 0;
-}
-
-.btn-scroll {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: white;
-  color: #4CAF50;
-  font-weight: bold;
-  border-radius: 8px;
-  transition: all 0.3s;
-}
-
-.btn-scroll:hover {
-  transform: translateY(-3px);
-  background: #f1f1f1;
-}
+/* ===== ヘッダー ===== */
+header { background:#4CAF50; color:white; padding:20px; text-align:center; }
+.header-content h1 { margin:0; font-size:2em; }
+nav ul { display:flex; justify-content:center; gap:15px; list-style:none; padding:0; margin-top:10px; }
+nav a { color:white; font-weight:bold; padding:6px 12px; border-radius:6px; }
+nav a:hover { background:rgba(255,255,255,0.2); transform:translateY(-2px); }
 
 /* ===== メイン ===== */
-main section {
-  padding: 60px 20px;
-  max-width: 1000px;
-  margin: auto;
-  background: #fff;
-  border-radius: 10px;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  scroll-margin-top: 80px;
-}
+main { padding:20px; max-width:1000px; margin:auto; }
+section { padding:40px 20px; margin-bottom:30px; background:#fff; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
 
-/* ===== グリッド ===== */
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.card,
-.post {
-  flex: 1 1 calc(33% - 20px);
-  min-width: 250px;
-  padding: 15px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.card:hover,
-.post:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-}
-
-.card img,
-.post img {
-  width: 100%;
-  border-radius: 8px;
-  cursor: pointer;
-}
+/* ===== グリッド・カード ===== */
+.grid { display:flex; flex-wrap:wrap; gap:20px; }
+.card { flex:1 1 calc(33% - 20px); min-width:250px; padding:15px; background:#fff; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+.card img { width:100%; border-radius:8px; cursor:pointer; }
+.card:hover { transform:translateY(-5px); box-shadow:0 6px 14px rgba(0,0,0,0.15); }
 
 /* ===== 動画 ===== */
-.video-section {
-  margin-bottom: 30px;
-}
-
-.video-title {
-  font-weight: bold;
-  margin-bottom: 6px;
-}
+.video-section { margin-bottom:30px; }
+.video-title { font-weight:bold; margin-bottom:6px; }
+.video-section iframe { width:100%; max-width:600px; border-radius:8px; }
 
 /* ===== ブログ ===== */
-.post {
-  margin-bottom: 40px;
-}
-
-.date {
-  color: #777;
-  font-size: 0.9em;
-}
+.post { margin-bottom:40px; }
+.date { color:#777; font-size:0.9em; }
+.blog-images img { width:30%; margin-right:5px; border-radius:6px; }
 
 /* ===== フッター ===== */
-footer {
-  background-color: #f8f9fa;
-  padding: 40px 20px;
-  border-top: 1px solid #ddd;
-  font-size: 14px;
-  text-align: center;
-  color: #555;
-}
-
-.github-link a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #333;
-  text-decoration: none;
-  font-weight: bold;
-  background: #f5f5f5;
-  padding: 6px 12px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.github-link a:hover {
-  background: #e1e1e1;
-  color: #000;
-  transform: translateY(-2px);
-}
-
-.github-icon {
-  width: 24px;
-  height: 24px;
-}
+footer { background:#f8f9fa; padding:40px 20px; border-top:1px solid #ddd; font-size:14px; text-align:center; color:#555; }
+.github-icon { width:24px; height:24px; vertical-align:middle; margin-right:5px; }
 
 /* ===== モーダル ===== */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 5000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: rgba(0,0,0,0.8);
-  justify-content: center;
-  align-items: center;
-}
+.modal { display:none; position:fixed; z-index:2000; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; }
+.modal-inner { position:relative; max-width:90%; max-height:90%; }
+.modal-content { width:100%; height:auto; border-radius:10px; }
+.close { position:absolute; top:-10px; right:-10px; color:white; font-size:32px; cursor:pointer; z-index:2100; }
 
-.modal-content {
-  max-width: 90%;
-  max-height: 80%;
-  border-radius: 8px;
+/* ===== カウントダウンアニメ ===== */
+@keyframes countdown-flash {
+  0% { transform: scale(1); color:#fff; text-shadow:2px2px4px rgba(0,0,0,0.5); }
+  50% { transform: scale(1.6); color:#ffeb3b; text-shadow:0 0 12px #ffeb3b; }
+  100% { transform: scale(1); color:#fff; text-shadow:2px2px4px rgba(0,0,0,0.5); }
 }
-
-.close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  color: white;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-}
+.countdown-bounce { animation: countdown-flash 0.5s ease-in-out forwards; }
 
 /* ===== レスポンシブ ===== */
-@media (max-width: 768px) {
-  .grid {
-    flex-direction: column;
-  }
-
-  .card,
-  .post {
-    flex: 1 1 100%;
-  }
-
-  .big-countdown {
-    font-size: 1.5em;
-  }
-}
-
-@media (max-width: 600px) {
-  main section {
-    padding: 40px 15px;
-  }
-
-  footer {
-    font-size: 13px;
-    padding: 30px 15px;
-  }
+@media (max-width:768px) {
+  .grid { flex-direction:column; }
+  .card { flex:1 1 100%; }
+  .blog-images img { width:100%; margin-bottom:5px; }
 }
