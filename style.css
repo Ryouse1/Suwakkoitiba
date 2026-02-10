@@ -5,10 +5,6 @@ a{text-decoration:none;}
 
 /* ヘッダー */
 header{position:relative;background:#4CAF50;color:white;padding:120px 20px 60px;text-align:center;border-radius:10px;}
-header nav{position:sticky;top:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);padding:12px 0;z-index:1000;}
-header nav ul{display:flex;justify-content:center;gap:15px;list-style:none;padding:0;margin:0;}
-header nav a{color:white;font-weight:bold;padding:6px 12px;border-radius:6px;}
-header nav a:hover{background:rgba(255,255,255,.2);transform:translateY(-2px);}
 .header-content h1{margin:0;font-size:2em;}
 #countdown{margin-top:10px;font-size:1.6em;font-weight:bold;}
 #countdown-message{margin-top:10px;font-size:1.6em;font-weight:bold;}
@@ -19,6 +15,12 @@ header nav a:hover{background:rgba(255,255,255,.2);transform:translateY(-2px);}
 .header-corner-img.top-right{top:10px;right:10px;}
 .header-corner-img.bottom-left{bottom:10px;left:10px;}
 .header-corner-img.bottom-right{bottom:10px;right:10px;}
+
+/* ナビ */
+nav{position:sticky;top:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);padding:12px 0;z-index:1000;}
+nav ul{display:flex;justify-content:center;gap:15px;list-style:none;padding:0;margin:0;}
+nav a{color:white;font-weight:bold;padding:6px 12px;border-radius:6px;}
+nav a:hover{background:rgba(255,255,255,.2);transform:translateY(-2px);}
 
 /* メイン */
 main{padding:20px;max-width:1000px;margin:auto;}
