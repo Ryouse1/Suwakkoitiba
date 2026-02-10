@@ -5,18 +5,17 @@
   <title>諏訪っ子市場</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="/favicon-v2.ico?v=2">
 </head>
 <body>
 
-<!-- ===== ヘッダー/トップ ===== -->
+<!-- ===== ヘッダー ===== -->
 <header>
-  <div class="header-overlay"></div>
+  <div class="header-bg"></div>
   <div class="header-content">
     <h1>諏訪っ子市場へようこそ！</h1>
     <p>次回の市場まであと…</p>
-    <p id="top-countdown" class="big-countdown">読み込み中…</p>
-    <p id="top-countdown-message" style="display:none;">🎉イベント開始！🎉</p>
+    <p id="countdown" class="big-countdown">読み込み中…</p>
+    <p id="countdown-message" style="display:none;">🎉イベント開始！🎉</p>
     <a href="#principal" class="btn-scroll">もっと見る ▼</a>
   </div>
 
@@ -40,7 +39,7 @@
     <p>僕たちは7月17日に諏訪っ子市場第一回を開催しました。今度、3月18日水曜日に諏訪っ子市場第2回を開催します！是非来てください！</p>
   </section>
 
-  <!-- ===== 野菜紹介 ===== -->
+  <!-- ===== 野菜 ===== -->
   <section id="vegetables">
     <h2>野菜紹介</h2>
     <div class="grid">
@@ -57,7 +56,7 @@
   <section id="videos">
     <h2>動画</h2>
     <div class="video-section">
-      <p class="video-title">前回の諏訪っこ市場動画</p>
+      <p class="video-title">前回の諏訪っ子市場動画</p>
       <iframe src="https://drive.google.com/file/d/1dW7gxfPq0x7khFmk5VjCpM-e4pO4EuHS/preview" 
               width="100%" height="480" allow="autoplay" allowfullscreen></iframe>
     </div>
@@ -66,21 +65,19 @@
   <!-- ===== ブログ ===== -->
   <section id="blog">
     <h2>ブログ</h2>
-
     <article class="post">
       <h3>ポスターを完成させました！</h3>
       <p class="date">投稿日：<span class="post-date" data-date="2025-12-19"></span></p>
       <img src="images/IMG_0367.png" alt="ポスター" class="zoomable">
       <p>ポスター第一弾完成しました。</p>
     </article>
-
     <article class="post">
       <h3>準備写真を公開しました！</h3>
       <p class="date">投稿日：<span class="post-date" data-date="2026-01-28"></span></p>
       <div class="blog-images">
         <img src="images/IMG_0415.jpeg" alt="準備写真1" class="zoomable">
-        <img src="/IMG_0418.jpeg" alt="準備写真2" class="zoomable">
-        <img src="/IMG_0422.jpeg" alt="準備写真3" class="zoomable">
+        <img src="images/IMG_0418.jpeg" alt="準備写真2" class="zoomable">
+        <img src="images/IMG_0422.jpeg" alt="準備写真3" class="zoomable">
       </div>
       <p>これが諏訪っ子市場準備の写真です。</p>
     </article>
@@ -93,18 +90,18 @@
     <p>電話：042-371-4533・4534</p>
     <p>FAX：042-337-7636</p>
     <p>URL：<a href="https://schit.net/tama/essuwa/" target="_blank">https://schit.net/tama/essuwa/</a></p>
-
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.3034097277396!2d139.45202591516456!3d35.62038198022634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018fb5b627ef825%3A0x53387caf317e9b8d!2z44CSMjA2LTAwMjQg5p2x5Lqs6YO95rW35biC5p2x5Lqs6YO95rW3!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp"
       width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   </section>
 </main>
 
+<!-- ===== フッター ===== -->
 <footer>
   <p>© 諏訪小学校</p>
 </footer>
 
-<!-- ===== ズーム用モーダル ===== -->
+<!-- ===== モーダル ===== -->
 <div id="imgModal" class="modal">
   <span class="close">&times;</span>
   <img class="modal-content" id="modalImg">
