@@ -1,14 +1,11 @@
 console.log("script.js loaded");
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", ()=>{
   startCountdown();
   formatPostDates();
   initZoomModal();
 });
 
-/* =========================
-   カウントダウン
-========================= */
 async function startCountdown(){
   const countdown=document.getElementById("countdown");
   const message=document.getElementById("countdown-message");
@@ -18,8 +15,9 @@ async function startCountdown(){
   try{
     const res=await fetch("/api/time",{cache:"no-store"});
     const data=await res.json();
-    now=new Date(data.now).getTime();
-    if(isNaN(now)) throw new Error("now is NaN");
+    if(!data.now) throw new Error("now missing");
+    now=Date.parse(data.now);
+    if(isNaN(now)) throw new Error("parsed now is NaN");
   }catch(e){console.warn("API fail, fallback to Date.now()",e);now=Date.now();}
 
   const openTime=new Date("2026-03-18T10:00:00+09:00").getTime();
@@ -27,27 +25,20 @@ async function startCountdown(){
   const timer=setInterval(()=>{
     let diff=openTime-now;
     now+=1000;
-
     if(diff<=0){clearInterval(timer);countdown.style.display="none";message.style.display="block";return;}
-
     const d=Math.floor(diff/(1000*60*60*24));
     const h=Math.floor(diff/(1000*60*60))%24;
     const m=Math.floor(diff/(1000*60))%60;
     const s=Math.floor(diff/1000)%60;
-
     countdown.textContent=`${d}日 ${h}時間 ${m}分 ${s}秒`;
 
     if(d===0 && h===0 && m===0 && s<=3){
       countdown.classList.add("countdown-bounce");
       setTimeout(()=>countdown.classList.remove("countdown-bounce"),500);
     }
-
   },1000);
 }
 
-/* =========================
-   日付整形
-========================= */
 function formatPostDates(){
   document.querySelectorAll(".post-date").forEach(el=>{
     const raw=el.dataset.date;
@@ -57,9 +48,6 @@ function formatPostDates(){
   });
 }
 
-/* =========================
-   画像モーダル
-========================= */
 function initZoomModal(){
   const modal=document.getElementById("imgModal");
   const modalImg=document.getElementById("modalImg");
@@ -77,7 +65,4 @@ function initZoomModal(){
     modal.style.display="none";
     document.body.style.overflow="auto";
   });
-
-  // 初回ロードでモーダル表示
-  // modal.style.display="block"; // 外すと任意クリック
 }
