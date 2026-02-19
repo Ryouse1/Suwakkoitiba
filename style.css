@@ -3,6 +3,18 @@ html {
   scroll-behavior: smooth;
 }
 
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+
+  mix-blend-mode: difference;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
