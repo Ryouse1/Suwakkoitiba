@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Suwakko Market</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" href="../favicon-v2.ico?v=2">
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <h1>Welcome to Suwakko Market!</h1>
+    <p id="countdown">Loading...</p>
+    <p id="countdown-message" style="display:none;">Event Started!</p>
+  </div>
+
+  <img src="https://schit.net/tama/essuwa/wysiwyg/image/download/1/3123/big" alt="Top Left" class="header-corner-img top-left zoomable">
+  <img src="https://schit.net/tama/essuwa/wysiwyg/image/download/1/3123/big" alt="Top Right" class="header-corner-img top-right zoomable">
+  <img src="https://schit.net/tama/essuwa/wysiwyg/image/download/1/3123/big" alt="Bottom Left" class="header-corner-img bottom-left zoomable">
+  <img src="https://schit.net/tama/essuwa/wysiwyg/image/download/1/3123/big" alt="Bottom Right" class="header-corner-img bottom-right zoomable">
+</header>
+
+<nav>
+  <ul>
+    <li><a href="../#top">Top</a></li>
+    <li><a href="#principal">Greeting</a></li>
+    <li><a href="#vegetables">Vegetables</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#market">Market Info</a></li>
+    <li><a href="../" onclick="setCookie('site_lang','ja')">日本語</a></li>
+  </ul>
+</nav>
+
+<main id="top">
+  <section id="principal">
+    <h2>Greeting from Students</h2>
+    <p>
+      We held the first Suwakko Market on July 17.
+      The second Suwakko Market will be held on Wednesday, March 18.
+      Please come and visit us!
+    </p>
+  </section>
+
+  <section id="vegetables">
+    <h2>Vegetables</h2>
+    <div class="grid">
+      <div class="card"><img class="zoomable" src="https://tsukatte.com/wp-content/uploads/2019/02/kujyo-negi.png" alt="Kujo Green Onion"><p>Kujo Green Onion</p></div>
+      <div class="card"><img class="zoomable" src="https://greenstock40.com/wp-content/uploads/2022/08/%E3%81%BB%E3%81%86%E3%82%8C%E3%82%93%E8%8D%89.png" alt="Spinach"><p>Spinach</p></div>
+      <div class="card"><img class="zoomable" src="https://illust8.com/wp-content/uploads/2018/07/vegetable_kabu_illust_672.png" alt="Turnip"><p>Turnip</p></div>
+      <div class="card"><img class="zoomable" src="https://tsukatte.com/wp-content/uploads/2019/02/radish.png" alt="Radish"><p>Radish</p></div>
+      <div class="card"><img class="zoomable" src="https://tsukatte.com/wp-content/uploads/2019/10/komatsuna.png" alt="Komatsuna"><p>Komatsuna</p></div>
+      <div class="card"><img class="zoomable" src="https://tsukatte.com/wp-content/uploads/2019/09/bok-choy.png" alt="Bok Choy"><p>Bok Choy</p></div>
+    </div>
+  </section>
+
+  <section id="videos">
+    <h2>Videos</h2>
+    <div class="video-section">
+      <p class="video-title">Previous Suwakko Market Video</p>
+      <iframe src="https://drive.google.com/file/d/1dW7gxfPq0x7khFmk5VjCpM-e4pO4EuHS/preview" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section id="blog">
+    <h2>Blog</h2>
+    <article class="post">
+      <h3>We Completed the Poster!</h3>
+      <p class="date">Posted on: <span class="post-date" data-date="2025-12-19"></span></p>
+      <img src="../images/IMG_0367.png" alt="Poster" class="zoomable">
+      <p>The first version of our poster has been completed.</p>
+    </article>
+
+    <article class="post">
+      <h3>Preparation Photos Released!</h3>
+      <p class="date">Posted on: <span class="post-date" data-date="2026-01-28"></span></p>
+      <div class="blog-images">
+        <img src="../images/IMG_0415.jpeg" alt="Preparation Photo 1" class="zoomable">
+        <img src="../IMG_0418.jpeg" alt="Preparation Photo 2" class="zoomable">
+        <img src="../IMG_0422.jpeg" alt="Preparation Photo 3" class="zoomable">
+      </div>
+      <p>These are photos from the preparation for Suwakko Market.</p>
+    </article>
+  </section>
+
+  <section id="market">
+    <h2>Market Information</h2>
+    <p>Address: 5-13 Suwa, Tama City, Tokyo 206-0024, Japan</p>
+    <p>Phone: 042-371-4533 / 4534</p>
+    <p>FAX: 042-337-7636</p>
+    <p>URL: <a href="https://schit.net/tama/essuwa/" target="_blank">Official School Website</a></p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.3034097277396!2d139.45202591516456!3d35.62038198022634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018fb5b627ef825%3A0x53387caf317e9b8d!5e0!3m2!1sen!2sjp" allowfullscreen></iframe>
+  </section>
+</main>
+
+<footer>
+  <a href="https://github.com/Ryouse1/Suwakkoitiba" target="_blank">
+    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" class="github-icon"> GitHub
+  </a>
+</footer>
+
+<div id="imgModal" class="modal">
+  <div class="modal-inner">
+    <span class="close">&times;</span>
+    <img id="modalImg" class="modal-content">
+  </div>
+</div>
+
+<script src="../script.js"></script>
+</body>
+</html>
