@@ -236,8 +236,8 @@ footer {
 
 .modal-inner {
   position: relative;
-  width: 300px;       /* 横幅固定 */
-  height: 200px;      /* 高さ固定 */
+  width: 400px;       /* 横幅固定 */
+  height: 300px;      /* 高さ固定 */
   max-width: 90vw;    /* 小さい画面なら90%幅 */
   max-height: 60vh;   /* 高さは画面の60%まで */
   display: flex;
