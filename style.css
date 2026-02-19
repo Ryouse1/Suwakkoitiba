@@ -250,11 +250,14 @@ footer {
 }
 
 .modal-content {
-  max-width: 100%;
-  max-height: 90vh;
+  max-width: 90vw;   /* 画面幅の90%まで */
+  max-height: 85vh;  /* 画面高さの85%まで ← 重要 */
+  width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: 12px;
   display: block;
+  margin: auto;
 }
 
 /* 閉じるボタン */
