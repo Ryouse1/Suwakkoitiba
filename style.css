@@ -220,60 +220,61 @@ footer {
 /* ===== モーダル ===== */
 .modal {
   position: fixed;
-  inset: 0;                      /* top:0; left:0; bottom:0; right:0 */
+  inset: 0;
   background: rgba(0,0,0,0.85);
   display: none;
-  justify-content: center;       
   align-items: center;
+  justify-content: center;
+  padding: 20px;
   z-index: 3000;
-  overflow: auto;                /* 画面小さい時はスクロール可能 */
-  margin: 0;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .modal.show {
   display: flex;
+  opacity: 1;
 }
 
 .modal-inner {
   position: relative;
-  max-width: 80vw;   /* 画面幅の80％まで */
-  max-height: 80vh;  /* 画面高さの80％まで */
-  width: auto;       /* 自動でサイズ調整 */
-  height: auto;      /* 自動でサイズ調整 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
+  max-width: 95%;
+  max-height: 95%;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.modal.show .modal-inner {
+  transform: scale(1);
 }
 
 .modal-content {
-  max-width: 500px;    /* 画像の最大幅 */
-  max-height: 400px;   /* 画像の最大高さ */
-  width: 100%;         /* 親に合わせる */
-  height: auto;        /* 高さは自動調整 */
-  object-fit: contain; 
+  max-width: 90vw;   /* 画面幅の90%まで */
+  max-height: 85vh;  /* 画面高さの85%まで ← 重要 */
+  width: auto;
+  height: auto;
+  object-fit: contain;
   border-radius: 12px;
   display: block;
+  margin: auto;
 }
 
-/* ×ボタン */
+/* 閉じるボタン */
 .close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: -15px;
+  right: -15px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 50%;
   width: 40px;
   height: 40px;
-  background: rgba(0,0,0,0.7);
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  border-radius: 50%;
-  cursor: pointer;
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 10;
-  transition: background 0.25s;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  color: white;
 }
 
 .close:hover {
