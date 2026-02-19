@@ -38,10 +38,12 @@
 
 © 諏訪小学校
 
+
+
 ## **EN**
 This repository contains the source code for the official website, which introduces and promotes the "Suwakko Market," run by sixth graders at Suwa Elementary School.
 
---
+---
 
 ## **About the Site**
 
@@ -49,7 +51,8 @@ This repository contains the source code for the official website, which introdu
 * It provides information on the items sold at the market, activities, and event information.
 * This website is run primarily by students as part of their school curriculum.
 
---
+---
+
 ## **Copyright**
 
 * The copyright for the text, images, and designs published on this website belongs to Suwa Elementary School or the sixth graders at Suwa Elementary School.
