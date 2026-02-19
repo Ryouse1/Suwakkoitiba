@@ -217,9 +217,10 @@ footer {
   vertical-align: middle;
 }
 
+/* ===== モーダル ===== */
 .modal {
   position: fixed;
-  inset: 0;               /* top:0; left:0; bottom:0; right:0 */
+  inset: 0;                     /* top:0; left:0; bottom:0; right:0 */
   background: rgba(0,0,0,0.85);
   display: none;
   justify-content: center;      
@@ -233,13 +234,13 @@ footer {
 }
 
 .modal-inner {
-  position: relative;     /* ここはそのままでもOK */
-  width: 600px;
-  max-width: 90vw;
-  max-height: 80vh;
+  position: relative;           /* ×ボタン用の基準 */
+  width: 600px;                  
+  max-width: 90vw;              
+  max-height: 80vh;  
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center;      /* 画像を中央 */
+  align-items: center;          /* 画像を中央 */
 }
 
 .modal-content {
@@ -250,11 +251,11 @@ footer {
   display: block;
 }
 
-/* モーダルの×ボタンを中央基準に */
-.modal-close {
+/* ×ボタン */
+.close {
   position: absolute;
-  top: -15px;    /* 親の外側に少し出す */
-  right: -15px;  /* 親の外側に少し出す */
+  top: 10px;          /* 親内の右上 */
+  right: 10px;        
   width: 40px;
   height: 40px;
   background: rgba(0,0,0,0.7);
@@ -267,9 +268,10 @@ footer {
   justify-content: center;
   align-items: center;
   z-index: 10;
+  transition: background 0.25s;
 }
 
-.modal-close:hover {
+.close:hover {
   background: rgba(255,255,255,0.3);
 }
 
