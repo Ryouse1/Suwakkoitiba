@@ -234,13 +234,12 @@ footer {
   display: flex;
 }
 
-/* 内側ラッパー（画像サイズ固定＋中央） */
 .modal-inner {
   position: relative;
-  width: 600px;                /* 好きな固定サイズ */
-  height: 400px;               /* 好きな固定サイズ */
-  max-width: 90vw;             /* 小さい画面対応 */
-  max-height: 80vh;            /* 小さい画面対応 */
+  width: 600px;      /* 基本サイズ */
+  height: 400px;     /* 基本サイズ */
+  max-width: 90vw;   /* 画面小さければ縮小 */
+  max-height: 80vh;  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -255,11 +254,11 @@ footer {
   display: block;
 }
 
-/* 閉じるボタン */
 .close {
   position: absolute;
-  top: -20px;                   /* 画像の外側に配置 */
-  right: -20px;                 /* 画像の外側に配置 */
+  top: 0;            /* 親の右上に固定 */
+  right: 0;          /* 親の右上に固定 */
+  transform: translate(50%, -50%);  /* 親の角の外側に移動 */
   width: 60px;
   height: 60px;
   background: rgba(0,0,0,0.7);
