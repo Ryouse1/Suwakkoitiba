@@ -217,35 +217,31 @@ footer {
   vertical-align: middle;
 }
 
-/* ===== モーダル背景 ===== */
 .modal {
   position: fixed;
-  inset: 0;                     /* top:0; left:0; bottom:0; right:0 */
+  inset: 0;               /* top:0; left:0; bottom:0; right:0 */
   background: rgba(0,0,0,0.85);
-  display: none;                /* 初期は非表示 */
+  display: none;
   justify-content: center;      
   align-items: center;
   z-index: 3000;
-  padding: 20px;               /* 画面端との余白 */
+  padding: 20px;
 }
 
-/* モーダル表示時 */
 .modal.show {
   display: flex;
 }
 
 .modal-inner {
-  position: relative;
-  width: 600px;      /* 基本サイズ */
-  height: 400px;     /* 基本サイズ */
-  max-width: 90vw;   /* 画面小さければ縮小 */
-  max-height: 80vh;  
+  position: relative;     /* ここはそのままでもOK */
+  width: 600px;
+  max-width: 90vw;
+  max-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* 画像本体 */
 .modal-content {
   width: 100%;
   height: 100%;
@@ -254,16 +250,16 @@ footer {
   display: block;
 }
 
-.close {
+/* モーダルの×ボタンを中央基準に */
+.modal-close {
   position: absolute;
-  top: 0;            /* 親の右上に固定 */
-  right: 0;          /* 親の右上に固定 */
-  transform: translate(50%, -50%);  /* 親の角の外側に移動 */
-  width: 60px;
-  height: 60px;
+  top: -15px;    /* 親の外側に少し出す */
+  right: -15px;  /* 親の外側に少し出す */
+  width: 40px;
+  height: 40px;
   background: rgba(0,0,0,0.7);
   color: white;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: bold;
   border-radius: 50%;
   cursor: pointer;
@@ -273,9 +269,10 @@ footer {
   z-index: 10;
 }
 
-.close:hover {
+.modal-close:hover {
   background: rgba(255,255,255,0.3);
 }
+
 
 /* ===== カウントダウンアニメーション ===== */
 @keyframes bounce3 {
