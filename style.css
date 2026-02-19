@@ -225,39 +225,28 @@ footer {
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 20px;
   z-index: 3000;
-
-  opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
 .modal.show {
   display: flex;
-  opacity: 1;
 }
 
 .modal-inner {
   position: relative;
-  max-width: 95%;
-  max-height: 95%;
-  transform: scale(0.8);
-  transition: transform 0.3s ease;
-}
-
-.modal.show .modal-inner {
-  transform: scale(1);
+  width: 640px;   /* 固定幅 */
+  height: 480px;  /* 固定高さ */
+  max-width: 90vw;
+  max-height: 90vh;
 }
 
 .modal-content {
-  max-width: 90vw;   /* 画面幅の90%まで */
-  max-height: 85vh;  /* 画面高さの85%まで ← 重要 */
-  width: auto;
-  height: auto;
+  width: 100%;    /* modal-inner に合わせる */
+  height: 100%;   /* modal-inner に合わせる */
   object-fit: contain;
   border-radius: 12px;
   display: block;
-  margin: auto;
+  margin: 0 auto;
 }
 
 /* 閉じるボタン */
