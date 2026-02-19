@@ -217,7 +217,7 @@ footer {
   vertical-align: middle;
 }
 
-/* ===== モーダル背景 ===== */
+/* ===== モーダル全体 ===== */
 .modal {
   position: fixed;
   inset: 0;
@@ -228,7 +228,6 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
 /* モーダル表示時 */
@@ -236,39 +235,39 @@ footer {
   display: flex;
 }
 
-/* 内側ラッパー */
+/* 内側ラッパーは画像サイズに合わせるだけ */
 .modal-inner {
   position: relative;
-  max-width: 90vw;   /* 画面幅の90%まで */
-  max-height: 90vh;  /* 画面高さの90%まで */
+  width: 600px;   /* 固定幅 */
+  height: 400px;  /* 固定高さ */
+  max-width: 90vw;  /* 小さい画面対応 */
+  max-height: 80vh; /* 小さい画面対応 */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* 画像 */
+/* 画像は内側ラッパーいっぱいに */
 .modal-content {
-  max-width: 600px;   /* 好きなサイズに固定 */
-  max-height: 400px;  /* 好きなサイズに固定 */
   width: 100%;
-  height: auto;       /* 縦横比を維持 */
+  height: 100%;
   object-fit: contain;
   border-radius: 12px;
   display: block;
 }
 
-/* 閉じるボタン */
+/* 閉じるボタンは内側ラッパーの外側に配置 */
 .modal .close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: -20px;      /* 画像の外側 */
+  right: -20px;    /* 画像の外側 */
+  width: 60px;
+  height: 60px;
   background: rgba(0,0,0,0.7);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 28px;
   color: white;
+  font-size: 32px;
   font-weight: bold;
+  border-radius: 50%;
   cursor: pointer;
   display: flex;
   justify-content: center;
