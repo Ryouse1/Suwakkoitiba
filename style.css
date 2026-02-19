@@ -245,8 +245,8 @@ footer {
 }
 
 .modal-content {
-  max-width: 500px;   /* 最大幅600pxに制限 */
-  max-height: 300px;  /* 最大高さ400pxに制限 */
+  max-width: 550px;   /* 最大幅600pxに制限 */
+  max-height: 350px;  /* 最大高さ400pxに制限 */
   width: auto;        /* 横幅自動調整 */
   height: auto;       /* 高さ自動調整 */
   object-fit: contain;
