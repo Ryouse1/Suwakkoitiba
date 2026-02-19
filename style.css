@@ -236,19 +236,21 @@ footer {
 
 .modal-inner {
   position: relative;
-  max-width: 80vw;   /* 横幅は画面の80%まで */
-  max-height: 80vh;  /* 高さは画面の80%まで */
+  max-width: 500px;   /* PCでも500pxまで */
+  max-height: 300px;  /* 高さも控えめ */
+  width: 90vw;        /* 小さい画面なら90%幅 */
+  height: auto;       /* 高さは自動 */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;     /* 周りに余白 */
+  padding: 5px;
 }
 
 .modal-content {
-  max-width: 600px;   /* 最大幅600pxに制限 */
-  max-height: 400px;  /* 最大高さ400pxに制限 */
-  width: auto;        /* 横幅自動調整 */
-  height: auto;       /* 高さ自動調整 */
+  max-width: 100%;    /* 親の幅に収まる */
+  max-height: 100%;   /* 親の高さに収まる */
+  width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: 12px;
   display: block;
