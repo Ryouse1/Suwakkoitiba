@@ -223,27 +223,32 @@ footer {
   inset: 0;
   background: rgba(0,0,0,0.85);
   display: none;
-  align-items: center;
-  justify-content: center;
   z-index: 3000;
+
+  display: flex;           /* flexで中央配置 */
+  justify-content: center; /* 横中央 */
+  align-items: center;     /* 縦中央 */
+  padding: 20px;
 }
 
 .modal.show {
   display: flex;
 }
 
+/* 内側ラッパー */
 .modal-inner {
   position: relative;
-  width: 640px;   /* 固定幅 */
-  height: 480px;  /* 固定高さ */
-  max-width: 90vw;
-  max-height: 90vh;
+  width: 80vw;          /* 画面幅の80% */
+  max-width: 800px;     /* 最大横幅 */
+  height: 60vh;         /* 画面高さの60% */
+  max-height: 600px;    /* 最大高さ */
 }
 
+/* 画像 */
 .modal-content {
-  width: 100%;    /* modal-inner に合わせる */
-  height: 100%;   /* modal-inner に合わせる */
-  object-fit: contain;
+  width: 100%;          /* modal-inner にフィット */
+  height: 100%;         /* modal-inner にフィット */
+  object-fit: contain;  /* 縦横比を保持 */
   border-radius: 12px;
   display: block;
   margin: 0 auto;
@@ -264,6 +269,7 @@ footer {
   font-size: 22px;
   cursor: pointer;
   color: white;
+  z-index: 10;
 }
 
 .close:hover {
