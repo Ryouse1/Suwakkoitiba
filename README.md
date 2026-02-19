@@ -1,6 +1,6 @@
 # 諏訪っ子市場（すわっこ市場）/Suwakkomarket
 
-## **JP**
+# JP
 
 本リポジトリは、**諏訪小学校6年生が運営する「諏訪っ子市場」**を紹介・宣伝する**公式Webサイト**の**ソースコード**です。
 
@@ -40,7 +40,7 @@
 
 
 
-## **EN**
+# EN
 This repository contains the source code for the official website, which introduces and promotes the "Suwakko Market," run by sixth graders at Suwa Elementary School.
 
 ---
