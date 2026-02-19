@@ -231,7 +231,7 @@ footer {
 }
 
 /* モーダル表示時 */
-.modal.show {
+.show {
   display: flex;
 }
 
@@ -257,7 +257,7 @@ footer {
 }
 
 /* 閉じるボタンは内側ラッパーの外側に配置 */
-.modal .close {
+.close {
   position: absolute;
   top: -20px;      /* 画像の外側 */
   right: -20px;    /* 画像の外側 */
@@ -275,7 +275,7 @@ footer {
   z-index: 10;
 }
 
-.modal .close:hover {
+.close:hover {
   background: rgba(255,255,255,0.3);
 }
 
