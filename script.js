@@ -97,24 +97,32 @@ function formatPostDates(){
 /* =========================
    Image Zoom
 ========================= */
-
 function initZoomModal(){
-  const modal=document.getElementById("imgModal");
+  const modal = document.getElementById("imgModal");
   if(!modal) return;
 
-  const modalImg=document.getElementById("modalImg");
-  const closeBtn=modal.querySelector(".close");
+  const modalImg = document.getElementById("modalImg");
+  const closeBtn = modal.querySelector(".close");
 
   document.querySelectorAll(".zoomable").forEach(img=>{
-    img.addEventListener("click",()=>{
-      modal.style.display="block";
-      modalImg.src=img.src;
-      document.body.style.overflow="hidden";
+    img.addEventListener("click", ()=>{
+      modal.style.display = "flex"; // display:flex に
+      setTimeout(()=> modal.classList.add("show"), 10); // opacity アニメーション
+      modalImg.src = img.src;
+      document.body.style.overflow = "hidden";
     });
   });
 
-  closeBtn.addEventListener("click",()=>{
-    modal.style.display="none";
-    document.body.style.overflow="auto";
+  closeBtn.addEventListener("click", ()=>{
+    modal.classList.remove("show"); // opacity アニメーション
+    setTimeout(()=>{
+      modal.style.display = "none"; // 0.3s 後に display:none
+      document.body.style.overflow = "auto";
+    }, 300); 
+  });
+
+  // モーダル背景クリックでも閉じる
+  modal.addEventListener("click", (e)=>{
+    if(e.target === modal) closeBtn.click();
   });
 }
