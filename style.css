@@ -258,10 +258,28 @@ footer {
   border-radius: 12px;
   display: block;
   margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* 黒いボタン：画像より前、バツボタンより後ろ */
+.modal-black-btn {
+  position: absolute;
+  z-index: 2;
+  top: 20px;   /* 好きな位置に調整 */
+  right: 20px; /* 好きな位置に調整 */
+  width: 40px;
+  height: 40px;
+  background: black;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
 }
 
 /* 閉じるボタン */
 .close {
+  z-index: 3;
   position: absolute;
   top: -15px;
   right: -15px;
