@@ -1,5 +1,7 @@
 # 諏訪っ子市場（すわっこ市場）
 
+## **JP**
+
 本リポジトリは、**諏訪小学校6年生が運営する「諏訪っ子市場」**を紹介・宣伝する**公式Webサイト**の**ソースコード**です。
 
 ---
@@ -35,3 +37,38 @@
 ---
 
 © 諏訪小学校
+
+## **EN**
+This repository contains the source code for the official website, which introduces and promotes the "Suwakko Market," run by sixth graders at Suwa Elementary School.
+
+--
+
+## **About the Site**
+
+* This website was created with the purpose of raising awareness of the "Suwakko Market" among local residents.
+* It provides information on the items sold at the market, activities, and event information.
+* This website is run primarily by students as part of their school curriculum.
+
+--
+## **Copyright**
+
+* The copyright for the text, images, and designs published on this website belongs to Suwa Elementary School or the sixth graders at Suwa Elementary School.
+* For use in school curriculum activities and non-profit purposes, quotation and introduction within reasonable limits are intended.
+* **Unauthorized mass reproduction, commercial use, and redistribution with modifications are prohibited.**
+
+---
+## **Disclaimer**
+
+* The content of this website was created as part of a learning activity, and accuracy and completeness are not guaranteed.
+* The operator assumes no responsibility for any damages arising from the use of this site. **
+
+---
+
+## **Image Handling**
+
+* The images posted here are used for the purpose of recording school activities and educational purposes.**
+* **To protect copyright, please refrain from saving or reusing the images.**
+
+---
+
+© Suwa Elementary School
