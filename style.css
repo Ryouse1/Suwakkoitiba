@@ -220,13 +220,14 @@ footer {
 /* ===== モーダル ===== */
 .modal {
   position: fixed;
-  inset: 0;                     /* top:0; left:0; bottom:0; right:0 */
+  inset: 0;                      /* top:0; left:0; bottom:0; right:0 */
   background: rgba(0,0,0,0.85);
   display: none;
-  justify-content: center;      
+  justify-content: center;       
   align-items: center;
   z-index: 3000;
-  padding: 20px;
+  overflow: auto;                /* 画面小さい時はスクロール可能 */
+  margin: 0;
 }
 
 .modal.show {
@@ -234,18 +235,17 @@ footer {
 }
 
 .modal-inner {
-  position: relative;           /* ×ボタン用の基準 */
-  width: 600px;                  
-  max-width: 90vw;              
-  max-height: 80vh;  
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
   display: flex;
-  justify-content: center;      /* 画像を中央 */
-  align-items: center;          /* 画像を中央 */
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   border-radius: 12px;
   display: block;
@@ -254,8 +254,8 @@ footer {
 /* ×ボタン */
 .close {
   position: absolute;
-  top: 10px;          /* 親内の右上 */
-  right: 10px;        
+  top: 10px;
+  right: 10px;
   width: 40px;
   height: 40px;
   background: rgba(0,0,0,0.7);
@@ -274,7 +274,6 @@ footer {
 .close:hover {
   background: rgba(255,255,255,0.3);
 }
-
 
 /* ===== カウントダウンアニメーション ===== */
 @keyframes bounce3 {
