@@ -153,14 +153,30 @@ section {
 }
 
 /* ===== 動画 ===== */
+/* セクションのスタイルはそのまま */
 .video-section {
   text-align: center;
   margin-bottom: 30px;
 }
 
-.video-section iframe {
+/* 16:9比率のラッパー */
+.video-section .iframe-container {
+  position: relative;
   width: 100%;
-  border-radius: 8px;
+  max-width: 640px;       /* 好きな最大幅 */
+  padding-bottom: 56.25%; /* 16:9比率 */
+  height: 0;
+  margin: 0 auto;
+}
+
+.video-section .iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;     /* 元の角丸を保持 */
+  border: 0;
 }
 
 /* ===== フッター ===== */
