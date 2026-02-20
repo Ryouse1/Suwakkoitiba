@@ -153,19 +153,19 @@ section {
 }
 
 /* ===== 動画 ===== */
-/* セクションのスタイルはそのまま */
+/* セクション中央揃えはそのまま */
 .video-section {
   text-align: center;
   margin-bottom: 30px;
 }
 
-/* 16:9比率のラッパー */
+/* 16:9比率を強制するラッパー */
 .video-section .iframe-container {
   position: relative;
   width: 100%;
-  max-width: 640px;       /* 好きな最大幅 */
-  padding-bottom: 56.25%; /* 16:9比率 */
+  max-width: 640px;        /* 好きな最大幅 */
   height: 0;
+  padding-bottom: 56.25%;  /* 16:9比率 */
   margin: 0 auto;
 }
 
@@ -175,7 +175,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 8px;     /* 元の角丸を保持 */
+  border-radius: 8px;
   border: 0;
 }
 
