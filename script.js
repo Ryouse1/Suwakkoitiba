@@ -1,4 +1,5 @@
 console.log("script.js loaded");
+alert("script.js loaded");
 
 /* =========================
    Language Cookie Control
