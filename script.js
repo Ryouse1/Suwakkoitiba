@@ -133,7 +133,6 @@ function initZoomModal(){
 
 function adjustLayout(){
   const width = window.innerWidth;
-
   const header = document.querySelector("header");
   const title = document.querySelector(".header-content h1");
   const countdown = document.getElementById("countdown");
@@ -142,26 +141,30 @@ function adjustLayout(){
   const videos = document.querySelectorAll(".video-section iframe");
   const cornerImgs = document.querySelectorAll(".header-corner-img");
 
+  // iframeの縦横比を16:9に調整
+  videos.forEach(v=>{
+    const w = v.offsetWidth;
+    v.style.height = (w * 9 / 16) + "px";
+  });
+
+  // ここから下は既存のヘッダー・文字サイズ調整
   if(width > 768){
     if(header) header.style.height = "300px";
     if(title) title.style.fontSize = "2.5em";
     if(countdown) countdown.style.fontSize = "1.8em";
     if(countdownMsg) countdownMsg.style.fontSize = "1.8em";
-    videos.forEach(v=>v.style.height="360px");
     cornerImgs.forEach(img=>{img.style.width="60px"; img.style.height="60px";});
   } else if(width > 480){
     if(header) header.style.height = "220px";
     if(title) title.style.fontSize = "1.8em";
     if(countdown) countdown.style.fontSize = "1.5em";
     if(countdownMsg) countdownMsg.style.fontSize = "1.5em";
-    videos.forEach(v=>v.style.height="220px");
     cornerImgs.forEach(img=>{img.style.width="40px"; img.style.height="40px";});
   } else {
     if(header) header.style.height = "180px";
     if(title) title.style.fontSize = "1.4em";
     if(countdown) countdown.style.fontSize = "1.2em";
     if(countdownMsg) countdownMsg.style.fontSize = "1.2em";
-    videos.forEach(v=>v.style.height="160px");
     cornerImgs.forEach(img=>{img.style.width="30px"; img.style.height="30px";});
   }
 
@@ -172,5 +175,5 @@ function adjustLayout(){
   }
 }
 
-// 画面リサイズ時も反映
+// リサイズ時も縦横比を維持
 window.addEventListener("resize", adjustLayout);
