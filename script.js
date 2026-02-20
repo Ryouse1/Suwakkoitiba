@@ -1,5 +1,4 @@
 console.log("script.js loaded");
-alert("script.js loaded");
 
 /* =========================
    Language Cookie Control
@@ -99,32 +98,30 @@ function formatPostDates(){
 /* =========================
    Image Zoom Modal
 ========================= */
-
 function initZoomModal(){
-  const modal=document.getElementById("imgModal");
+  const modal = document.getElementById("imgModal");
   if(!modal) return;
 
-  const modalImg=document.getElementById("modalImg");
-  const closeBtn=modal.querySelector(".close");
+  const modalImg = document.getElementById("modalImg");
+  const closeBtn = modal.querySelector(".close");
 
   document.querySelectorAll(".zoomable").forEach(img=>{
     img.addEventListener("click",()=>{
-      modal.style.display="flex";
-      modalImg.src=img.src;
-      document.body.style.overflow="hidden";
+      modalImg.src = img.src;
+      modal.classList.add("show");
+      document.body.style.overflow = "hidden";
     });
   });
 
   closeBtn.addEventListener("click",()=>{
-    modal.style.display="none";
-    document.body.style.overflow="auto";
+    modal.classList.remove("show");
+    document.body.style.overflow = "auto";
   });
 
-  // モーダル背景クリックで閉じる
-  modal.addEventListener("click", (e)=>{
+  modal.addEventListener("click",(e)=>{
     if(e.target === modal){
-      modal.style.display="none";
-      document.body.style.overflow="auto";
+      modal.classList.remove("show");
+      document.body.style.overflow = "auto";
     }
   });
 }
