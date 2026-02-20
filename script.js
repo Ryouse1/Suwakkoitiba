@@ -95,23 +95,10 @@ function formatPostDates(){
   });
 }
 
-<script>
-function adjustIframeHeight() {
-  const iframes = document.querySelectorAll('.responsive-iframe');
-  iframes.forEach(iframe => {
-    const width = iframe.offsetWidth;
-    iframe.style.height = (width * 9 / 16) + 'px'; // 16:9比率に固定
-  });
-}
-
-// 初期表示とリサイズ時に呼ぶ
-window.addEventListener('load', adjustIframeHeight);
-window.addEventListener('resize', adjustIframeHeight);
-</script>
-
 /* =========================
    Image Zoom Modal
 ========================= */
+
 function initZoomModal(){
   const modal = document.getElementById("imgModal");
   if(!modal) return;
